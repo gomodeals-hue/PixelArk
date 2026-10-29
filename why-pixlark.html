@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Why Pixlark Marketing — Senior-led digital marketing engineering, zero outsourcing, speed-to-lead execution, and first-party attribution.">
+  <title>Why Pixlark &bull; Pixlark Marketing</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Modern Digital Agency Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Fixed Background Video Layer (Persists while scrolling) -->
+  <div class="fixed-video-background-layer" aria-hidden="true">
+    <video id="bgHeroVideo" autoplay loop muted playsinline class="fixed-fullscreen-video">
+      <source src="assets/images/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Top Header -->
+  <header class="modern-site-header" id="header">
+    <a href="index.html" class="header-center-logo" aria-label="Pixlark Marketing Home">
+      <img src="assets/images/logo.png" alt="Pixlark Marketing" class="header-brand-logo-full">
+    </a>
+
+    <nav class="header-left-nav" aria-label="Main Navigation">
+      <a href="index.html" class="header-nav-link" data-i18n="nav_home">Home</a>
+      <a href="services.html" class="header-nav-link" data-i18n="nav_services">Services</a>
+      <a href="why-pixlark.html" class="header-nav-link active" data-i18n="nav_why">Why Choose Us</a>
+      <a href="solutions.html" class="header-nav-link" data-i18n="nav_pricing">Pricing &amp; Plans</a>
+      <a href="faq.html" class="header-nav-link" data-i18n="nav_faq">FAQ</a>
+      <a href="contact.html" class="header-nav-link" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="header-right-actions">
+      <select id="languageSelector" class="header-select-control header-lang-select" aria-label="Select Language"
+        onchange="window.setPixlarkLanguage &amp; window.setPixlarkLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="hi">हिन्दी</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+      </select>
+      <a href="auth.html" class="header-nav-link"
+        style="font-weight:700; font-size:0.86rem; color:var(--text-dark); display:inline-flex; align-items:center; gap:6px;">
+        <i class="fa-solid fa-user-lock" style="color:var(--bg-blue, #0052FF); font-size:0.88rem;"></i>
+        <span data-i18n="nav_suite">Client Suite</span>
+      </a>
+      <a href="contact.html" class="header-btn-hire">
+        <span data-i18n="nav_hire">Work With Us &rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero Banner -->
+    <section class="inner-page-hero-section">
+      <div class="container-modern">
+        <div class="inner-hero-tag" data-i18n="hero_tag_why">
+          <i class="fa-solid fa-shield-halved"></i> Why Choose Pixlark
+        </div>
+        <h1 class="inner-hero-title" data-i18n="hero_title_why">
+          A marketing partner you can <span class="highlight-blue">trust to deliver</span>.
+        </h1>
+        <p class="inner-hero-desc" data-i18n="hero_desc_why">
+          Clear strategy, accountable execution, and reporting that connects marketing activity to the business outcomes
+          you care about.
+        </p>
+      </div>
+    </section>
+
+    <!-- Pillars Grid -->
+    <section class="team-services-section" style="padding: 70px 0;">
+      <div class="container-modern">
+        <div class="services-full-catalog-grid">
+
+          <div class="service-catalog-box">
+            <div class="catalog-box-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <h2 class="catalog-box-title" data-i18n="why_p1_title">Experienced Marketing Experts</h2>
+            <p class="catalog-box-desc" data-i18n="why_p1_desc">
+              You work with experienced specialists who understand the relationship between audience, offer, channel,
+              creative, conversion path, and measurement.
+            </p>
+          </div>
+
+          <div class="service-catalog-box">
+            <div class="catalog-box-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h2 class="catalog-box-title" data-i18n="why_p2_title">Quick Lead Follow-Up</h2>
+            <p class="catalog-box-desc" data-i18n="why_p2_desc">
+              We help connect forms, booking tools, CRM systems, and notifications so new inquiries can move into your
+              sales process quickly and consistently.
+            </p>
+          </div>
+
+          <div class="service-catalog-box">
+            <div class="catalog-box-icon"><i class="fa-solid fa-crown"></i></div>
+            <h2 class="catalog-box-title" data-i18n="why_p3_title">Direct Senior Attention</h2>
+            <p class="catalog-box-desc" data-i18n="why_p3_desc">
+              Your account is managed directly by experienced marketers who can answer questions, make strategic
+              adjustments, and keep work moving forward.
+            </p>
+          </div>
+
+          <div class="service-catalog-box">
+            <div class="catalog-box-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h2 class="catalog-box-title" data-i18n="why_p4_title">First-Party Attribution</h2>
+            <p class="catalog-box-desc" data-i18n="why_p4_desc">
+              Clear conversion tracking and reporting so you know which campaigns, channels, and pages are actually
+              generating leads and sales.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Full-Bleed 50/50 Split Showcase -->
+    <section class="fullbleed-split-section">
+      <div class="fullbleed-split-left-blue">
+        <div class="fullbleed-tag"><i class="fa-solid fa-asterisk"></i> Your Growth Partner</div>
+        <h2 class="fullbleed-heading">RESULTS<br>OVER<br>EXCUSES</h2>
+        <p class="fullbleed-subtext">
+          Regular video check-ins and direct messaging keep you informed every step of the way.
+        </p>
+        <a href="contact.html" class="btn-primary-blue" style="align-self: flex-start;">
+          <span data-i18n="hero_cta_proposal">Talk To Our Team &rarr;</span>
+        </a>
+      </div>
+      <div class="fullbleed-split-right-media">
+        <img src="assets/images/team-office-meeting.png" alt="Pixlark Marketing Team" loading="lazy">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="modern-site-footer">
+    <div class="container-modern">
+      <div class="footer-logo-brand-lockup">
+        <img src="assets/images/logo.png" alt="Pixlark Marketing" class="footer-brand-logo-full">
+      </div>
+      <h2 class="footer-hero-title">
+        <span data-i18n="footer_tagline_1">LET'S GROW YOUR</span><br>
+        <span class="blue-highlight" data-i18n="footer_tagline_2">BUSINESS ONLINE</span> <span
+          data-i18n="footer_tagline_3">TOGETHER.</span>
+      </h2>
+      <div class="footer-bottom-row">
+        <div>&copy; <span id="currentYear">2026</span> <span data-i18n="footer_rights">Pixlark Marketing. All rights
+            reserved.</span></div>
+        <div style="display:flex; gap:24px;">
+          <a href="mailto:contact@pixlarkmarketing.com">contact@pixlarkmarketing.com</a>
+          <a href="https://in.linkedin.com/in/pixlark-marketing" target="_blank" rel="noopener noreferrer"
+            style="display:inline-flex; align-items:center; gap:6px;"><i class="fa-brands fa-linkedin-in"></i>
+            LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

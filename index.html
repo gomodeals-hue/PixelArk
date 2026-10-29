@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Pixlark Marketing is a full-service digital marketing agency offering paid media, SEO, content production, conversion-focused websites, lead generation, and performance reporting.">
+  <title>Pixlark Marketing &bull; Full-Service Digital Marketing Agency</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter (Modern Professional Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Unified Digital Agency Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Fixed Background Video Layer (Persists while scrolling) -->
+  <div class="fixed-video-background-layer" aria-hidden="true">
+    <video id="bgHeroVideo" autoplay loop muted playsinline class="fixed-fullscreen-video">
+      <source src="assets/images/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- ==========================================================
+       01. TRANSLUCENT TOP NAV HEADER (ALL PAGES)
+       ========================================================== -->
+  <!-- Top Header -->
+  <header class="modern-site-header" id="header">
+    <!-- Brand Logo (Crisp, Single Aligned Brand Lockup) -->
+    <a href="index.html" class="header-center-logo" aria-label="Pixlark Marketing Home">
+      <img src="assets/images/logo.png" alt="Pixlark Marketing" class="header-brand-logo-full">
+    </a>
+
+    <!-- Clean Navigation Links (No Numbers) -->
+    <nav class="header-left-nav" aria-label="Main Navigation">
+      <a href="index.html" class="header-nav-link active" data-i18n="nav_home">Home</a>
+      <a href="services.html" class="header-nav-link" data-i18n="nav_services">Services</a>
+      <a href="why-pixlark.html" class="header-nav-link" data-i18n="nav_why">Why Choose Us</a>
+      <a href="solutions.html" class="header-nav-link" data-i18n="nav_pricing">Pricing &amp; Plans</a>
+      <a href="faq.html" class="header-nav-link" data-i18n="nav_faq">FAQ</a>
+      <a href="contact.html" class="header-nav-link" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="header-right-actions">
+      <select id="languageSelector" class="header-select-control header-lang-select" aria-label="Select Language"
+        onchange="window.setPixlarkLanguage &amp; window.setPixlarkLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="hi">हिन्दी</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+      </select>
+      <a href="auth.html" class="header-nav-link" style="font-weight:700; font-size:0.86rem; color:var(--text-dark); display:inline-flex; align-items:center; gap:6px;">
+        <i class="fa-solid fa-user-lock" style="color:var(--bg-blue, #0052FF); font-size:0.88rem;"></i>
+        <span data-i18n="nav_suite">Client Suite</span>
+      </a>
+      <a href="contact.html" class="header-btn-hire">
+        <span data-i18n="nav_hire">Work With Us &rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==========================================================
+         02. HERO SECTION (CENTERED, CLEAR, VIDEO VISIBLE)
+         ========================================================== -->
+    <section class="modern-agency-hero-section" id="hero">
+      <div class="hero-centered-container">
+
+        <div class="section-tag-asterisk" data-i18n="hero_tag_home">
+          <i class="fa-solid fa-rocket"></i> Full-Service Digital Marketing Agency
+        </div>
+
+        <h1 class="hero-title-grotesk" data-i18n="hero_title_home">
+          Performance marketing for businesses ready to grow.
+        </h1>
+
+        <p class="hero-subtext-clean" data-i18n="hero_desc_home">
+          We plan, launch, and optimize the channels that drive demand: paid search and social, SEO, content, landing
+          pages, lead capture, and reporting. Every recommendation is tied to your goals, audience, and available
+          budget.
+        </p>
+
+        <div class="hero-actions-row">
+          <a href="contact.html" class="btn-primary-blue">
+            <span data-i18n="hero_cta_proposal">Request A Proposal &rarr;</span>
+          </a>
+          <a href="services.html" class="btn-bracket-modern">
+            <span data-i18n="hero_cta_services">Explore Services</span>
+          </a>
+        </div>
+
+        <!-- Trust & Partner Bar -->
+        <div class="hero-partners-bar" style="justify-content:center; max-width:680px; margin:0 auto;">
+          <span class="hero-partners-label" data-i18n="hero_partners_label">Platforms we work with:</span>
+          <div class="hero-partners-list">
+            <span><i class="fa-brands fa-google"></i> Google Ads</span>
+            <span><i class="fa-brands fa-meta"></i> Meta &amp; Instagram</span>
+            <span><i class="fa-brands fa-shopify"></i> Shopify</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         03. CLEAN 50/50 SPLIT SHOWCASE (REAL LIVE DASHBOARD)
+         ========================================================== -->
+    <section class="fullbleed-split-section" id="showcase">
+      <!-- Left Content Side (50vw) -->
+      <div class="fullbleed-split-left-blue">
+        <div class="fullbleed-tag" data-i18n="showcase_tag">
+          <i class="fa-solid fa-asterisk"></i> Strategy, Execution, Measurement
+        </div>
+        <h2 class="fullbleed-heading" data-i18n="showcase_title">
+          ATTRACT BUYERS.<br>
+          GROW REVENUE.
+        </h2>
+        <p class="fullbleed-subtext" data-i18n="showcase_desc">
+          Whether your priority is ecommerce revenue, qualified leads, or stronger local visibility, we connect campaign
+          strategy with the landing pages, tracking, and follow-up needed to measure progress.
+        </p>
+        <a href="services.html" class="btn-primary-blue" style="align-self: flex-start;">
+          <span data-i18n="showcase_btn">See Our Complete Process &rarr;</span>
+        </a>
+      </div>
+
+      <!-- Center Floating Seam Badge -->
+      <div class="fullbleed-center-stamp-badge">
+        <div class="stamp-icon"><i class="fa-solid fa-trophy"></i></div>
+        <div class="stamp-label" data-i18n="badge_growth_experts">Growth<br>Experts</div>
+      </div>
+
+      <!-- Right Media Side (Real Dashboard Image) -->
+      <div class="fullbleed-split-right-media">
+        <img src="assets/images/real-client-growth-dashboard.jpg" alt="Real Time Ad Analytics and Performance Dashboard"
+          loading="lazy">
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         04. CONTAINERIZED SECTION: TEAM & CAPABILITIES (UTILIZING SPACE)
+         ========================================================== -->
+    <section class="team-services-section" id="capabilities">
+      <div class="container-modern">
+        <div class="team-services-grid">
+
+          <!-- Left Team Photo Frame -->
+          <div class="team-visual-container">
+            <div class="team-photo-frame">
+              <img src="assets/images/team-office-meeting.png" alt="Pixlark Marketing Specialists" loading="lazy">
+            </div>
+            <div class="team-floating-stat-badge">
+              <div class="stat-big">100%</div>
+              <div class="stat-text" data-i18n="cap_stat_text">Dedicated In-House Team</div>
+            </div>
+          </div>
+
+          <!-- Right Content & Service Cards -->
+          <div>
+            <div class="section-tag-asterisk" data-i18n="cap_tag">
+              <i class="fa-solid fa-check"></i> What We Do Best
+            </div>
+            <h2 class="team-services-headline" data-i18n="cap_headline">
+              YOUR COMPLETE <span class="highlight-blue">MARKETING TEAM</span>
+            </h2>
+            <p class="team-services-desc" data-i18n="cap_desc">
+              We bring paid media, creative, SEO, conversion optimization, and analytics into one coordinated plan, so
+              each channel supports the same business objective.
+            </p>
+
+            <!-- Service Box 01 -->
+            <div class="service-capability-card">
+              <div class="service-card-left-title" data-i18n="cap_card1_title">Paid Online Ads</div>
+              <div class="service-card-right-list">
+                <span data-i18n="cap_card1_l1"><i class="fa-solid fa-check"></i> Google Search Ads to capture
+                  high-intent buyers</span>
+                <span data-i18n="cap_card1_l2"><i class="fa-solid fa-check"></i> Meta &amp; Instagram Ads targeted to
+                  your ideal clients</span>
+                <span data-i18n="cap_card1_l3"><i class="fa-solid fa-check"></i> TikTok campaigns for reach,
+                  consideration, and conversions</span>
+                <span data-i18n="cap_card1_l4"><i class="fa-solid fa-check"></i> Ongoing testing of audiences, creative,
+                  and landing pages</span>
+              </div>
+            </div>
+
+            <!-- Service Box 02 -->
+            <div class="service-capability-card">
+              <div class="service-card-left-title" data-i18n="cap_card2_title">Content &amp; Search SEO</div>
+              <div class="service-card-right-list">
+                <span data-i18n="cap_card2_l1"><i class="fa-solid fa-check"></i> Short-form video and social creative
+                  for active campaigns</span>
+                <span data-i18n="cap_card2_l2"><i class="fa-solid fa-check"></i> Technical, on-page, local, and
+                  content-led SEO</span>
+                <span data-i18n="cap_card2_l3"><i class="fa-solid fa-check"></i> Clean, mobile-friendly landing pages
+                  built to convert</span>
+                <span data-i18n="cap_card2_l4"><i class="fa-solid fa-check"></i> Clear monthly video reports with
+                  transparent data</span>
+              </div>
+            </div>
+
+            <a href="services.html" class="btn-primary-blue" style="margin-top: 10px;">
+              <span data-i18n="cap_btn">Explore All Services &rarr;</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         05. CLEAN 50/50 STRATEGISE SECTION (TRUSTED CLIENT RESULTS)
+         ========================================================== -->
+    <section class="fullbleed-strategise-section" id="case-studies">
+      <!-- Left Creative Visual (50vw) -->
+      <div class="fullbleed-strat-media">
+        <img src="assets/images/about-team.jpg" alt="Campaign Strategy and Planning" loading="lazy">
+      </div>
+
+      <!-- Right Crisp White Content (50vw) -->
+      <div class="fullbleed-strat-content">
+        <div class="section-tag-asterisk" data-i18n="strat_tag">
+          <i class="fa-solid fa-chart-line"></i> Performance Highlights
+        </div>
+        <h2 class="fullbleed-strat-headline" data-i18n="strat_headline">
+          REAL RESULTS FOR<br>
+          <span class="highlight-blue">REAL BUSINESSES</span>
+        </h2>
+        <p class="fullbleed-strat-desc" data-i18n="strat_desc">
+          We combine audience research, channel strategy, conversion-focused creative, and reliable tracking to learn
+          what is working and improve the next campaign iteration.
+        </p>
+
+        <a href="contact.html" class="btn-bracket-modern" style="align-self:flex-start; margin-bottom:28px;">
+          <span data-i18n="strat_btn">[ Talk To Our Team &rarr; ]</span>
+        </a>
+
+        <!-- Case Stats Row -->
+        <div class="fullbleed-stats-row">
+          <div class="fullbleed-stat-item" onclick="openIndexModal('techscale')">
+            <div class="stat-num">+450</div>
+            <div class="stat-label">Booked Inquiries</div>
+          </div>
+          <div class="fullbleed-stat-item" onclick="openIndexModal('auracommerce')">
+            <div class="stat-num">3.8x</div>
+            <div class="stat-label">Ad Sales Return</div>
+          </div>
+          <div class="fullbleed-stat-item" onclick="openIndexModal('apexlegal')">
+            <div class="stat-num">+640%</div>
+            <div class="stat-label">Google Search Traffic</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         06. CONTAINERIZED SECTION: CONTACT FORM
+         ========================================================== -->
+    <section class="discovery-form-section" id="contact">
+      <div class="container-modern">
+        <div class="intake-modern-card">
+          <div class="section-tag-asterisk">
+            <i class="fa-solid fa-paper-plane"></i> Get In Touch
+          </div>
+          <h2
+            style="font-family:var(--font-heading); font-size:clamp(1.8rem, 2.8vw, 2.6rem); font-weight:900; letter-spacing:-0.03em; margin-bottom:12px; color:var(--text-dark);">
+            Contact Our Team
+          </h2>
+          <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.6; margin-bottom:28px;">
+            Tell us about your business and your goals. Our team will review your message and reach out to you within 24
+            hours.
+          </p>
+
+          <form id="modernIntakeForm" novalidate>
+            <div class="form-grid-2col">
+              <input type="text" name="fullName" class="input-modern" placeholder="Your Name *" required>
+              <input type="email" name="email" class="input-modern" placeholder="Email Address *" required>
+            </div>
+
+            <div class="form-grid-2col">
+              <input type="tel" name="phone" class="input-modern" placeholder="Phone Number / WhatsApp">
+              <input type="url" name="website" class="input-modern" placeholder="Website or Business Name">
+            </div>
+
+            <div style="margin-bottom:24px;">
+              <textarea name="message" class="input-modern" rows="3"
+                placeholder="What are your main business goals right now? (e.g. more sales, more phone calls, website redesign...)"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary-blue" style="width:100%; justify-content:center; padding:15px;">
+              <span>Contact Us &rarr;</span>
+            </button>
+
+            <div id="intakeSuccessAlert"
+              style="display:none; margin-top:20px; padding:16px; background:var(--bg-blue-light); border:1.5px solid var(--bg-blue); color:var(--bg-blue-dark); border-radius:var(--radius-xs); font-size:0.92rem;">
+              <strong>Thank you!</strong> We have received your message and will reach out to you within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="modern-site-footer">
+    <div class="container-modern">
+      <div class="footer-logo-brand-lockup">
+        <img src="assets/images/logo.png" alt="Pixlark Marketing" class="footer-brand-logo-full">
+      </div>
+      <h2 class="footer-hero-title">
+        <span data-i18n="footer_tagline_1">LET'S GROW YOUR</span><br>
+        <span class="blue-highlight" data-i18n="footer_tagline_2">BUSINESS ONLINE</span> <span
+          data-i18n="footer_tagline_3">TOGETHER.</span>
+      </h2>
+
+      <div class="footer-bottom-row">
+        <div>&copy; <span id="currentYear">2026</span> <span data-i18n="footer_rights">Pixlark Marketing. All rights
+            reserved.</span></div>
+        <div style="display:flex; gap:24px;">
+          <a href="mailto:contact@pixlarkmarketing.com">contact@pixlarkmarketing.com</a>
+          <a href="https://in.linkedin.com/in/pixlark-marketing" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px;"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Detail Modal -->
+  <div id="indexArchiveModal" class="service-modal-overlay" role="dialog" aria-modal="true">
+    <div class="service-modal-card">
+      <button id="closeIndexModalBtn" class="service-modal-close" aria-label="Close modal">&times;</button>
+      <div id="indexModalBody"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript Controller -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

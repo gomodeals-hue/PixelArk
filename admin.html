@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixlark Marketing - Lead Management Dashboard</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/pixlark-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body {
+      background-color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-light);
+      padding: 16px 0;
+    }
+    .admin-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .admin-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--brand-orange);
+      background: var(--brand-orange-subtle);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .admin-main {
+      padding: 40px 0;
+      flex: 1;
+    }
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-lbl {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .stat-count {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .controls-bar {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .controls-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-select {
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .leads-table-wrap {
+      background: #ffffff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+    .leads-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+    .leads-table th {
+      background: #f8fafc;
+      padding: 14px 18px;
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .leads-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+    .leads-table tr:hover {
+      background: #fbfcfe;
+    }
+    .lead-name {
+      font-weight: 700;
+      color: var(--text-main);
+      display: block;
+    }
+    .lead-contact {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 4px;
+    }
+    .lead-contact a {
+      color: var(--brand-cyan-dark);
+      text-decoration: none;
+    }
+    .lead-contact a:hover {
+      text-decoration: underline;
+    }
+    .lead-services-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .service-tag-item {
+      font-size: 0.72rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+    }
+    .lead-msg {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+    .status-select {
+      padding: 5px 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+      cursor: pointer;
+    }
+    .status-NEW { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+    .status-CONTACTED { background: #fefce8; color: #a16207; border-color: #fef08a; }
+    .status-QUALIFIED { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+    .status-CLOSED { background: #f8fafc; color: #64748b; border-color: #e2e8f0; }
+    .empty-state {
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .empty-icon {
+      font-size: 2.5rem;
+      color: var(--border-active);
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Header -->
+  <header class="admin-header">
+    <div class="container admin-header-inner">
+      <div class="admin-title-wrap">
+        <a href="/" class="brand-link">
+          <img src="assets/images/logo.png" alt="Pixlark Logo" class="brand-logo-img" style="height:36px; width:auto;">
+        </a>
+        <span class="admin-badge">Lead Engine Dashboard</span>
+      </div>
+      <div>
+        <a href="/" class="btn btn-secondary btn-sm">
+          <i class="fa-solid fa-arrow-left"></i> View Live Site
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Content -->
+  <main class="admin-main">
+    <div class="container">
+      
+      <!-- Metrics Strip -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          <span class="stat-lbl">Total Inquiries</span>
+          <span class="stat-count text-cyan" id="statTotal">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-lbl">New Leads</span>
+          <span class="stat-count text-orange" id="statNew">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-lbl">Contacted</span>
+          <span class="stat-count text-yellow" id="statContacted">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-lbl">Qualified & Active</span>
+          <span class="stat-count text-success" id="statQualified">0</span>
+        </div>
+      </div>
+
+      <!-- Controls Filter & Actions -->
+      <div class="controls-bar">
+        <div class="controls-left">
+          <label for="statusFilter" style="font-size:0.82rem; font-weight:600;">Status:</label>
+          <select id="statusFilter" class="filter-select" onchange="filterLeads()">
+            <option value="ALL">All Statuses</option>
+            <option value="NEW">New Only</option>
+            <option value="CONTACTED">Contacted</option>
+            <option value="QUALIFIED">Qualified</option>
+            <option value="CLOSED">Closed</option>
+          </select>
+
+          <label for="searchInput" style="font-size:0.82rem; font-weight:600; margin-left:8px;">Search:</label>
+          <input type="text" id="searchInput" class="filter-select" placeholder="Name, Email, or Service..." oninput="filterLeads()">
+        </div>
+
+        <div class="controls-right" style="display:flex; gap:8px;">
+          <button class="btn btn-secondary btn-sm" onclick="sendTestEmail()">
+            <i class="fa-regular fa-paper-plane"></i> Test Email Alert
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="fetchLeads()">
+            <i class="fa-solid fa-rotate"></i> Refresh
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="exportCSV()">
+            <i class="fa-solid fa-download"></i> Export CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- Leads Table -->
+      <div class="leads-table-wrap">
+        <table class="leads-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Prospect Details</th>
+              <th>Requested Services</th>
+              <th>Message / Goals</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody">
+            <tr>
+              <td colspan="6" class="empty-state">
+                <i class="fa-solid fa-spinner fa-spin empty-icon"></i>
+                <p>Loading inquiries...</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    let allLeads = [];
+
+    async function fetchLeads() {
+      try {
+        const res = await fetch('/api/leads');
+        const data = await res.json();
+        if (data.success) {
+          allLeads = data.leads;
+          updateStats();
+          filterLeads();
+        }
+      } catch (err) {
+        console.error('Error fetching leads:', err);
+        document.getElementById('leadsTableBody').innerHTML = `
+          <tr>
+            <td colspan="6" class="empty-state">
+              <i class="fa-solid fa-triangle-exclamation empty-icon" style="color:var(--brand-red);"></i>
+              <p>Failed to connect to backend. Please ensure the server is running.</p>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    function updateStats() {
+      document.getElementById('statTotal').innerText = allLeads.length;
+      document.getElementById('statNew').innerText = allLeads.filter(l => l.status === 'NEW').length;
+      document.getElementById('statContacted').innerText = allLeads.filter(l => l.status === 'CONTACTED').length;
+      document.getElementById('statQualified').innerText = allLeads.filter(l => l.status === 'QUALIFIED').length;
+    }
+
+    function filterLeads() {
+      const status = document.getElementById('statusFilter').value;
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const filtered = allLeads.filter(lead => {
+        const matchesStatus = (status === 'ALL') || (lead.status === status);
+        const matchesSearch = !search || 
+          lead.fullName.toLowerCase().includes(search) || 
+          lead.email.toLowerCase().includes(search) ||
+          (lead.services && lead.services.some(s => s.toLowerCase().includes(search))) ||
+          (lead.message && lead.message.toLowerCase().includes(search));
+        return matchesStatus && matchesSearch;
+      });
+
+      renderTable(filtered);
+    }
+
+    function renderTable(leads) {
+      const tbody = document.getElementById('leadsTableBody');
+      if (leads.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="empty-state">
+              <i class="fa-solid fa-inbox empty-icon"></i>
+              <p>No inquiries found matching your filters.</p>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = leads.map(lead => `
+        <tr>
+          <td style="white-space:nowrap; font-size:0.8rem; color:var(--text-light);">
+            ${lead.formattedDate || new Date(lead.createdAt).toLocaleDateString()}
+          </td>
+          <td>
+            <span class="lead-name">${escapeHtml(lead.fullName)}</span>
+            <div class="lead-contact">
+              <a href="mailto:${escapeHtml(lead.email)}"><i class="fa-regular fa-envelope"></i> ${escapeHtml(lead.email)}</a>
+              ${lead.phone ? `<a href="tel:${escapeHtml(lead.phone)}"><i class="fa-solid fa-phone"></i> ${escapeHtml(lead.phone)}</a>` : ''}
+              ${lead.website ? `<a href="${escapeHtml(lead.website)}" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> ${escapeHtml(lead.website)}</a>` : ''}
+            </div>
+          </td>
+          <td>
+            <div class="lead-services-tags">
+              ${(lead.services && lead.services.length) ? 
+                lead.services.map(s => `<span class="service-tag-item">${escapeHtml(s)}</span>`).join('') : 
+                '<span style="color:var(--text-light); font-size:0.75rem;">None specified</span>'
+              }
+            </div>
+          </td>
+          <td>
+            <div class="lead-msg">${escapeHtml(lead.message || '—')}</div>
+          </td>
+          <td>
+            <select class="status-select status-${lead.status}" onchange="updateLeadStatus('${lead.id}', this.value)">
+              <option value="NEW" ${lead.status === 'NEW' ? 'selected' : ''}>NEW</option>
+              <option value="CONTACTED" ${lead.status === 'CONTACTED' ? 'selected' : ''}>CONTACTED</option>
+              <option value="QUALIFIED" ${lead.status === 'QUALIFIED' ? 'selected' : ''}>QUALIFIED</option>
+              <option value="CLOSED" ${lead.status === 'CLOSED' ? 'selected' : ''}>CLOSED</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-secondary btn-sm" style="padding:4px 8px; color:var(--brand-red);" title="Delete" onclick="deleteLead('${lead.id}')">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    async function updateLeadStatus(id, newStatus) {
+      try {
+        const res = await fetch(`/api/leads/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+        const data = await res.json();
+        if (data.success) {
+          const idx = allLeads.findIndex(l => l.id === id);
+          if (idx !== -1) allLeads[idx].status = newStatus;
+          updateStats();
+          filterLeads();
+        }
+      } catch (err) {
+        alert('Could not update status: ' + err.message);
+      }
+    }
+
+    async function deleteLead(id) {
+      if (!confirm('Are you sure you want to remove this lead?')) return;
+      try {
+        const res = await fetch(`/api/leads/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          allLeads = allLeads.filter(l => l.id !== id);
+          updateStats();
+          filterLeads();
+        }
+      } catch (err) {
+        alert('Could not delete lead: ' + err.message);
+      }
+    }
+
+    async function sendTestEmail() {
+      const email = prompt('Enter recipient email address for test alert:', 'contact@pixlarkmarketing.com');
+      if (!email) return;
+      try {
+        const res = await fetch('/api/test-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ to: email })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(' ' + data.message);
+        } else {
+          alert(' Error: ' + (data.error || 'Failed to dispatch test email.'));
+        }
+      } catch (err) {
+        alert('Server connection error: ' + err.message);
+      }
+    }
+
+    function exportCSV() {
+      if (!allLeads.length) {
+        alert('No leads available to export.');
+        return;
+      }
+      const headers = ['ID', 'Date', 'Full Name', 'Email', 'Phone', 'Website', 'Services', 'Message', 'Status'];
+      const rows = allLeads.map(l => [
+        `"${l.id}"`,
+        `"${l.formattedDate || l.createdAt}"`,
+        `"${l.fullName.replace(/"/g, '""')}"`,
+        `"${l.email}"`,
+        `"${l.phone || ''}"`,
+        `"${l.website || ''}"`,
+        `"${(l.services || []).join(', ')}"`,
+        `"${(l.message || '').replace(/"/g, '""')}"`,
+        `"${l.status}"`
+      ]);
+
+      const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', `pixlark_leads_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // Initial Load
+    fetchLeads();
+  </script>
+</body>
+</html>

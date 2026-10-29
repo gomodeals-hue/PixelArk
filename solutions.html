@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Pixlark Marketing Growth Solutions — Flexible retainers, creative sprints, and custom full-funnel digital marketing partnerships.">
+  <title>Solutions &bull; Pixlark Marketing</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Modern Digital Agency Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Fixed Background Video Layer (Persists while scrolling) -->
+  <div class="fixed-video-background-layer" aria-hidden="true">
+    <video id="bgHeroVideo" autoplay loop muted playsinline class="fixed-fullscreen-video">
+      <source src="assets/images/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Top Header -->
+  <header class="modern-site-header" id="header">
+    <a href="index.html" class="header-center-logo" aria-label="Pixlark Marketing Home">
+      <img src="assets/images/logo.png" alt="Pixlark Marketing" class="header-brand-logo-full">
+    </a>
+
+    <nav class="header-left-nav" aria-label="Main Navigation">
+      <a href="index.html" class="header-nav-link" data-i18n="nav_home">Home</a>
+      <a href="services.html" class="header-nav-link" data-i18n="nav_services">Services</a>
+      <a href="why-pixlark.html" class="header-nav-link" data-i18n="nav_why">Why Choose Us</a>
+      <a href="solutions.html" class="header-nav-link active" data-i18n="nav_pricing">Pricing &amp; Plans</a>
+      <a href="faq.html" class="header-nav-link" data-i18n="nav_faq">FAQ</a>
+      <a href="contact.html" class="header-nav-link" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="header-right-actions">
+      <select id="languageSelector" class="header-select-control header-lang-select" aria-label="Select Language"
+        onchange="window.setPixlarkLanguage &amp; window.setPixlarkLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="hi">हिन्दी</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+      </select>
+      <a href="auth.html" class="header-nav-link"
+        style="font-weight:700; font-size:0.86rem; color:var(--text-dark); display:inline-flex; align-items:center; gap:6px;">
+        <i class="fa-solid fa-user-lock" style="color:var(--bg-blue, #0052FF); font-size:0.88rem;"></i>
+        <span data-i18n="nav_suite">Client Suite</span>
+      </a>
+      <a href="contact.html" class="header-btn-hire">
+        <span data-i18n="nav_hire">Work With Us &rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero Banner -->
+    <section class="inner-page-hero-section">
+      <div class="container-modern">
+        <div class="inner-hero-tag" data-i18n="hero_tag_plans">
+          <i class="fa-solid fa-shapes"></i> Flexible Plans
+        </div>
+        <h1 class="inner-hero-title" data-i18n="hero_title_plans">
+          Marketing plans <span class="highlight-blue">tailored to your budget</span>.
+        </h1>
+        <p class="inner-hero-desc" data-i18n="hero_desc_plans">
+          Choose a working model around your priorities, internal resources, and growth stage, from ongoing channel
+          management to focused creative, lead generation, or SEO engagements.
+        </p>
+      </div>
+    </section>
+
+    <!-- Solutions Grid -->
+    <section class="team-services-section" style="padding: 70px 0;">
+      <div class="container-modern">
+        <div class="services-full-catalog-grid">
+
+          <div class="service-catalog-box">
+            <div>
+              <div class="catalog-box-icon"><i class="fa-solid fa-fire"></i></div>
+              <h2 class="catalog-box-title" data-i18n="plan_1_title">Full Monthly Growth Plan</h2>
+              <div class="pricing-plan-badge">
+                <span class="pricing-amount">$2,990</span>
+                <span class="pricing-frequency" data-i18n="plan_1_freq">/ month</span>
+              </div>
+              <p class="catalog-box-desc" data-i18n="plan_1_desc">
+                An ongoing partnership covering the channels and deliverables that matter most to your growth plan, with
+                regular optimization, communication, and performance reporting.
+              </p>
+            </div>
+            <a href="contact.html" class="btn-primary-blue" style="align-self:flex-start; margin-top:20px;">
+              <span data-i18n="plan_1_btn">Get Details &amp; Pricing &rarr;</span>
+            </a>
+          </div>
+
+          <div class="service-catalog-box">
+            <div>
+              <div class="catalog-box-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+              <h2 class="catalog-box-title" data-i18n="plan_2_title">30-Day Video &amp; Creative Sprint</h2>
+              <div class="pricing-plan-badge">
+                <span class="pricing-amount">$1,490</span>
+                <span class="pricing-frequency" data-i18n="plan_2_freq">/ sprint</span>
+              </div>
+              <p class="catalog-box-desc" data-i18n="plan_2_desc">
+                Need a focused creative push? We scope and produce a batch of short-form videos and ad assets for
+                Instagram, TikTok, YouTube Shorts, or paid campaigns.
+              </p>
+            </div>
+            <a href="contact.html" class="btn-primary-blue" style="align-self:flex-start; margin-top:20px;">
+              <span data-i18n="plan_2_btn">Order Video Sprint &rarr;</span>
+            </a>
+          </div>
+
+          <div class="service-catalog-box">
+            <div>
+              <div class="catalog-box-icon"><i class="fa-solid fa-trophy"></i></div>
+              <h2 class="catalog-box-title" data-i18n="plan_3_title">New Customer Lead Engine</h2>
+              <div class="pricing-plan-badge">
+                <span class="pricing-amount">$2,250</span>
+                <span class="pricing-frequency" data-i18n="plan_3_freq">/ system</span>
+              </div>
+              <p class="catalog-box-desc" data-i18n="plan_3_desc">
+                Designed for service businesses and consultancies. We connect campaign traffic to forms, qualification,
+                lead routing, and appointment booking so your sales process has clearer inputs.
+              </p>
+            </div>
+            <a href="contact.html" class="btn-primary-blue" style="align-self:flex-start; margin-top:20px;">
+              <span data-i18n="plan_3_btn">Build Lead System &rarr;</span>
+            </a>
+          </div>
+
+          <div class="service-catalog-box">
+            <div>
+              <div class="catalog-box-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+              <h2 class="catalog-box-title" data-i18n="plan_4_title">Google SEO Ranking Program</h2>
+              <div class="pricing-plan-badge">
+                <span class="pricing-amount">$1,250</span>
+                <span class="pricing-frequency" data-i18n="plan_4_freq">/ month</span>
+              </div>
+              <p class="catalog-box-desc" data-i18n="plan_4_desc">
+                Improve search visibility for relevant topics and local queries through technical, on-page, content, and
+                profile optimization. Results depend on competition, site health, and consistency over time.
+              </p>
+            </div>
+            <a href="contact.html" class="btn-primary-blue" style="align-self:flex-start; margin-top:20px;">
+              <span data-i18n="plan_4_btn">Start Ranking on Google &rarr;</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="modern-site-footer">
+    <div class="container-modern">
+      <div class="footer-logo-brand-lockup">
+        <img src="assets/images/logo.png" alt="Pixlark Marketing" class="footer-brand-logo-full">
+      </div>
+      <h2 class="footer-hero-title">
+        <span data-i18n="footer_tagline_1">LET'S GROW YOUR</span><br>
+        <span class="blue-highlight" data-i18n="footer_tagline_2">BUSINESS ONLINE</span> <span
+          data-i18n="footer_tagline_3">TOGETHER.</span>
+      </h2>
+      <div class="footer-bottom-row">
+        <div>&copy; <span id="currentYear">2026</span> <span data-i18n="footer_rights">Pixlark Marketing. All rights
+            reserved.</span></div>
+        <div style="display:flex; gap:24px;">
+          <a href="mailto:contact@pixlarkmarketing.com">contact@pixlarkmarketing.com</a>
+          <a href="https://in.linkedin.com/in/pixlark-marketing" target="_blank" rel="noopener noreferrer"
+            style="display:inline-flex; align-items:center; gap:6px;"><i class="fa-brands fa-linkedin-in"></i>
+            LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixlark Business Suite &bull; Marketing & Growth Operations</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Unified Dashboard Stylesheet -->
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+
+  <div class="suite-app-container">
+
+    <!-- ==========================================================
+         LEFT SIDEBAR (BUSINESS SUITE NAVIGATION)
+         ========================================================== -->
+    <aside class="suite-sidebar">
+      
+      <!-- Brand Lockup -->
+      <div class="suite-sidebar-header">
+        <a href="index.html" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+          <img src="assets/images/logo.png" alt="Pixlark" class="suite-brand-logo-img">
+          <div>
+            <div class="suite-brand-title">Pixlark Suite</div>
+            <div class="suite-brand-badge" data-i18n="suite_badge">Client Operations</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Account Switcher Box -->
+      <div class="suite-account-box" id="accountSwitcherBox" onclick="openAccountSwitcherModal()" title="Click to manage & switch business accounts">
+        <div class="suite-account-info">
+          <div class="suite-account-avatar" id="activeAccountAvatar">P</div>
+          <div>
+            <div class="suite-account-name" id="activeAccountName">My Growth Business</div>
+            <div class="suite-account-type" id="activeAccountType">Meta &bull; Google &bull; TikTok</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; color:#94A3B8;"></i>
+      </div>
+
+      <!-- Navigation Menu -->
+      <ul class="suite-nav-list">
+        <li class="suite-nav-heading" data-i18n="nav_heading_growth">Growth & Performance</li>
+        <li class="suite-nav-item">
+          <a class="suite-nav-link active" data-tab="overview">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span data-i18n="tab_overview">Overview</span>
+          </a>
+        </li>
+        <li class="suite-nav-item">
+          <a class="suite-nav-link" data-tab="ads">
+            <i class="fa-solid fa-bullhorn"></i>
+            <span data-i18n="tab_ads">Ads Manager</span>
+            <span class="suite-nav-badge" id="navBadgeAds">0 Live</span>
+          </a>
+        </li>
+        <li class="suite-nav-item">
+          <a class="suite-nav-link" data-tab="planner">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span data-i18n="tab_planner">Planner & Content</span>
+            <span class="suite-nav-badge" id="navBadgePosts" style="display:none;">0</span>
+          </a>
+        </li>
+
+        <li class="suite-nav-heading" data-i18n="nav_heading_crm">Communication & CRM</li>
+        <li class="suite-nav-item">
+          <a class="suite-nav-link" data-tab="inbox">
+            <i class="fa-solid fa-inbox"></i>
+            <span data-i18n="tab_inbox">Unified Inbox</span>
+            <span class="suite-nav-badge" id="navBadgeInbox" style="background:#0052FF; color:#FFF; display:none;">0</span>
+          </a>
+        </li>
+        <li class="suite-nav-item">
+          <a class="suite-nav-link" data-tab="leads">
+            <i class="fa-solid fa-users"></i>
+            <span data-i18n="tab_leads">Lead Center</span>
+            <span class="suite-nav-badge" id="navBadgeLeads" style="display:none;">0</span>
+          </a>
+        </li>
+
+        <li class="suite-nav-heading" data-i18n="nav_heading_analytics">Analytics & Operations</li>
+        <li class="suite-nav-item">
+          <a class="suite-nav-link" data-tab="insights">
+            <i class="fa-solid fa-chart-line"></i>
+            <span data-i18n="tab_insights">Insights & ROAS</span>
+          </a>
+        </li>
+        <li class="suite-nav-item">
+          <a class="suite-nav-link" data-tab="settings">
+            <i class="fa-solid fa-gear"></i>
+            <span data-i18n="tab_settings">Settings & Tracking</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- User Profile Footer -->
+      <div class="suite-sidebar-footer">
+        <div class="suite-user-info">
+          <div class="suite-user-avatar" id="suiteUserAvatar">U</div>
+          <div>
+            <div class="suite-user-name" id="suiteUserName">Client User</div>
+            <div class="suite-user-role" id="suiteUserRole">Business Owner</div>
+          </div>
+        </div>
+        <button onclick="handleSuiteLogout()" style="background:none; border:none; color:#94A3B8; cursor:pointer; font-size:0.95rem;" title="Log Out / Switch User">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- ==========================================================
+         MAIN CONTENT AREA
+         ========================================================== -->
+    <div class="suite-main-area">
+
+      <!-- Top Header Bar -->
+      <header class="suite-topbar">
+        <div class="suite-topbar-left">
+          <h1 class="suite-page-title" id="suitePageTitle" data-i18n="title_overview">Business Overview & KPIs</h1>
+          <div class="suite-connected-assets-pill" onclick="switchTab('settings')" title="Manage Connected Social & Ad Accounts">
+            <i class="fa-brands fa-meta" style="color:#0052FF;"></i>
+            <i class="fa-brands fa-instagram" style="color:#E1306C;"></i>
+            <i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>
+            <span id="topbarConnectedCount">3 Assets Connected</span>
+          </div>
+        </div>
+
+        <div class="suite-topbar-right">
+          
+          <!-- Currency Switcher -->
+          <div style="display:flex; align-items:center; gap:4px;">
+            <i class="fa-solid fa-coins" style="font-size:0.8rem; color:#64748B;"></i>
+            <select id="globalCurrencySelect" class="suite-select-pill" onchange="changeSuiteCurrency(this.value)" title="Change Currency">
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="INR">INR (₹)</option>
+              <option value="CAD">CAD ($)</option>
+              <option value="AUD">AUD ($)</option>
+              <option value="AED">AED (AED)</option>
+              <option value="JPY">JPY (¥)</option>
+            </select>
+          </div>
+
+          <!-- Language Switcher -->
+          <div style="display:flex; align-items:center; gap:4px;">
+            <i class="fa-solid fa-language" style="font-size:0.9rem; color:#64748B;"></i>
+            <select id="globalLanguageSelect" class="suite-select-pill" onchange="changeSuiteLanguage(this.value)" title="Change Language">
+              <option value="en">English (US)</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="hi">हिन्दी</option>
+              <option value="ar">العربية</option>
+            </select>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <button class="btn-suite-secondary" onclick="openAddLeadModal()" title="Manually record a new inbound prospect">
+            <i class="fa-solid fa-user-plus"></i>
+            <span data-i18n="btn_lead">+ Lead</span>
+          </button>
+
+          <button class="btn-suite-primary" onclick="openCreateCampaignStudio()">
+            <i class="fa-solid fa-plus"></i>
+            <span data-i18n="btn_create_campaign">Create Campaign</span>
+          </button>
+
+          <a href="index.html" class="btn-suite-secondary" title="View Public Website">
+            <i class="fa-solid fa-globe"></i>
+            <span data-i18n="btn_website">Website</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Scrollable Tab Content Container -->
+      <main class="suite-scroll-content">
+
+        <!-- ==========================================
+             TAB 1: OVERVIEW (HOME)
+             ========================================== -->
+        <div class="suite-tab-pane active" id="tab_overview">
+          
+          <!-- Key Metrics Grid -->
+          <div class="suite-kpi-grid">
+            
+            <div class="suite-kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-title" data-i18n="kpi_spend">Total Ad Spend</span>
+                <div class="kpi-icon-wrap"><i class="fa-solid fa-wallet"></i></div>
+              </div>
+              <div class="kpi-main-val" id="kpiTotalSpend">$0.00</div>
+              <div class="kpi-trend neutral" id="kpiSpendTrend">
+                <i class="fa-solid fa-chart-simple"></i>
+                <span id="kpiActiveCampaignsCount">0 active campaigns</span>
+              </div>
+            </div>
+
+            <div class="suite-kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-title" data-i18n="kpi_revenue">Attributed Revenue</span>
+                <div class="kpi-icon-wrap" style="background:rgba(16,185,129,0.1); color:#10B981;"><i class="fa-solid fa-dollar-sign"></i></div>
+              </div>
+              <div class="kpi-main-val" id="kpiTotalRevenue" style="color:#059669;">$0.00</div>
+              <div class="kpi-trend positive" id="kpiRevenueTrend">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+                <span data-i18n="kpi_attributed_return">Direct attributed return</span>
+              </div>
+            </div>
+
+            <div class="suite-kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-title" data-i18n="kpi_roas">Blended ROAS</span>
+                <div class="kpi-icon-wrap" style="background:rgba(99,102,241,0.1); color:#6366F1;"><i class="fa-solid fa-chart-line"></i></div>
+              </div>
+              <div class="kpi-main-val" id="kpiRoas">0.00x</div>
+              <div class="kpi-trend positive" id="kpiRoasTrend">
+                <i class="fa-solid fa-bullseye"></i>
+                <span data-i18n="kpi_target_roas">Target: 3.50x+</span>
+              </div>
+            </div>
+
+            <div class="suite-kpi-card">
+              <div class="kpi-top-row">
+                <span class="kpi-title" data-i18n="kpi_leads">Inbound Leads</span>
+                <div class="kpi-icon-wrap" style="background:rgba(245,158,11,0.1); color:#F59E0B;"><i class="fa-solid fa-user-group"></i></div>
+              </div>
+              <div class="kpi-main-val" id="kpiLeadsCount">0</div>
+              <div class="kpi-trend positive" id="kpiLeadsTrend">
+                <i class="fa-solid fa-circle-check"></i>
+                <span id="kpiCpaText">Recorded Inbound Pipeline</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Split Showcase Row -->
+          <div class="suite-split-layout">
+            
+            <!-- Left Chart Simulator -->
+            <div class="suite-card-box">
+              <div class="suite-card-header">
+                <div class="suite-card-title">
+                  <i class="fa-solid fa-chart-area" style="color:var(--suite-primary);"></i>
+                  <span data-i18n="chart_title">Performance Trajectory (Ad Spend vs Attributed Revenue)</span>
+                </div>
+                <div style="font-size:0.75rem; color:var(--suite-text-muted); font-weight:700;" data-i18n="chart_live_stream">
+                  Live Account Stream
+                </div>
+              </div>
+              <div class="suite-card-body" id="overviewChartContainer">
+                <!-- SVG dynamically generated by JS based on real campaigns -->
+              </div>
+            </div>
+
+            <!-- Right Recommended Actions & Alerts -->
+            <div class="suite-card-box">
+              <div class="suite-card-header">
+                <div class="suite-card-title">
+                  <i class="fa-solid fa-bolt" style="color:var(--suite-warning);"></i>
+                  <span data-i18n="growth_engine_title">Growth Operations Engine</span>
+                </div>
+              </div>
+              <div class="suite-card-body" id="overviewRecommendationsContainer" style="display:flex; flex-direction:column; gap:12px;">
+                <!-- Populated dynamically by JS -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quick Preview of Live Campaigns -->
+          <div class="suite-card-box" style="margin-bottom:24px;">
+            <div class="suite-card-header">
+              <div class="suite-card-title">
+                <i class="fa-solid fa-bullhorn" style="color:var(--suite-primary);"></i>
+                <span data-i18n="active_campaigns_title">Active Live Campaigns</span>
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button class="btn-suite-secondary" onclick="openCreateCampaignStudio()" data-i18n="btn_new_campaign">+ New Campaign</button>
+                <button class="btn-suite-secondary" onclick="switchTab('ads')" data-i18n="btn_full_ads_manager">Full Ads Manager &rarr;</button>
+              </div>
+            </div>
+            <div class="suite-table-responsive">
+              <table class="suite-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="th_status">Status</th>
+                    <th data-i18n="th_campaign_name">Campaign Name & Channel</th>
+                    <th data-i18n="th_daily_budget">Daily Budget</th>
+                    <th data-i18n="th_spend">Spend</th>
+                    <th data-i18n="th_revenue">Revenue</th>
+                    <th data-i18n="th_roas">ROAS</th>
+                    <th data-i18n="th_ctr">CTR</th>
+                    <th data-i18n="th_conversions">Conversions</th>
+                    <th data-i18n="th_actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewCampaignsTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+              <div id="overviewCampaignsEmpty" class="suite-empty-state" style="display:none;">
+                <div class="suite-empty-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="suite-empty-title" data-i18n="empty_campaigns_title">No campaigns launched yet</div>
+                <div class="suite-empty-desc" data-i18n="empty_campaigns_desc">Create your first ad campaign across Meta, Google, or TikTok to start tracking live performance.</div>
+                <button class="btn-suite-primary" onclick="openCreateCampaignStudio()">
+                  <i class="fa-solid fa-plus"></i> <span data-i18n="btn_create_first_campaign">Create First Campaign</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Inbound Leads Preview -->
+          <div class="suite-card-box">
+            <div class="suite-card-header">
+              <div class="suite-card-title">
+                <i class="fa-solid fa-users" style="color:var(--suite-primary);"></i>
+                <span data-i18n="recent_leads_title">Recent Inbound CRM Leads</span>
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button class="btn-suite-secondary" onclick="openAddLeadModal()" data-i18n="btn_add_lead">+ Add Lead</button>
+                <button class="btn-suite-secondary" onclick="switchTab('leads')" data-i18n="btn_open_lead_center">Open Lead Center &rarr;</button>
+              </div>
+            </div>
+            <div class="suite-table-responsive">
+              <table class="suite-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="th_lead_contact">Lead Name & Contact</th>
+                    <th data-i18n="th_service">Service Area</th>
+                    <th data-i18n="th_budget">Estimated Budget</th>
+                    <th data-i18n="th_stage">Stage</th>
+                    <th data-i18n="th_received">Received</th>
+                    <th data-i18n="th_action">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewRecentLeadsBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+              <div id="overviewLeadsEmpty" class="suite-empty-state" style="display:none;">
+                <div class="suite-empty-icon"><i class="fa-solid fa-user-plus"></i></div>
+                <div class="suite-empty-title" data-i18n="empty_leads_title">No CRM leads recorded yet</div>
+                <div class="suite-empty-desc" data-i18n="empty_leads_desc">Inbound inquiries from the public website, contact forms, and chats will automatically appear here in real time.</div>
+                <button class="btn-suite-secondary" onclick="openAddLeadModal()" data-i18n="btn_record_lead">+ Record Inbound Lead</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ==========================================
+             TAB 2: ADS MANAGER
+             ========================================== -->
+        <div class="suite-tab-pane" id="tab_ads">
+          <div class="suite-card-box">
+            <div class="suite-card-header">
+              <div class="suite-card-title">
+                <i class="fa-solid fa-sliders" style="color:var(--suite-primary);"></i>
+                <span data-i18n="ads_manager_title">Campaign Operations & Budget Allocator</span>
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button class="btn-suite-secondary" onclick="pauseAllCampaigns()" data-i18n="btn_pause_all">Pause All</button>
+                <button class="btn-suite-secondary" onclick="resumeAllCampaigns()" data-i18n="btn_resume_all">Resume All</button>
+                <button class="btn-suite-primary" onclick="openCreateCampaignStudio()">
+                  <i class="fa-solid fa-plus"></i> <span data-i18n="btn_create_campaign">Create Campaign</span>
+                </button>
+              </div>
+            </div>
+            <div class="suite-card-body" style="padding-bottom:0;">
+              <div class="suite-toolbar-row">
+                <div class="suite-search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="adsSearchInput" class="suite-search-input" placeholder="Search campaigns by name or objective..." oninput="handleAdsSearch(this.value)">
+                </div>
+                <div class="suite-filter-pills">
+                  <button type="button" class="suite-filter-pill active" onclick="filterCampaignsPlatform('all', this)" data-i18n="filter_all_networks">All Networks</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterCampaignsPlatform('meta', this)">Meta (FB & IG)</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterCampaignsPlatform('google', this)">Google Search</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterCampaignsPlatform('tiktok', this)">TikTok Ads</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterCampaignsPlatform('linkedin', this)">LinkedIn</button>
+                </div>
+              </div>
+            </div>
+            <div class="suite-table-responsive">
+              <table class="suite-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="th_status">Status</th>
+                    <th data-i18n="th_campaign_name">Campaign Name & Network</th>
+                    <th data-i18n="th_daily_budget">Daily Budget</th>
+                    <th data-i18n="th_spend">Spend</th>
+                    <th data-i18n="th_revenue">Revenue</th>
+                    <th data-i18n="th_roas">ROAS</th>
+                    <th data-i18n="th_cpm">CPM</th>
+                    <th data-i18n="th_ctr">CTR</th>
+                    <th data-i18n="th_conversions">Conversions</th>
+                    <th data-i18n="th_actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adsManagerTableBody">
+                  <!-- Synced with JS -->
+                </tbody>
+              </table>
+              <div id="adsManagerEmpty" class="suite-empty-state" style="display:none;">
+                <div class="suite-empty-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="suite-empty-title" data-i18n="empty_filter_title">No campaigns match your filter</div>
+                <div class="suite-empty-desc" data-i18n="empty_filter_desc">Launch a new ad campaign or switch your network filter to see active items.</div>
+                <button class="btn-suite-primary" onclick="openCreateCampaignStudio()">
+                  <i class="fa-solid fa-plus"></i> <span data-i18n="btn_create_campaign">Create New Campaign</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TAB 3: CONTENT PLANNER
+             ========================================== -->
+        <div class="suite-tab-pane" id="tab_planner">
+          <div class="suite-card-box">
+            <div class="suite-card-header">
+              <div class="suite-card-title">
+                <i class="fa-solid fa-calendar-check" style="color:var(--suite-primary);"></i>
+                <span data-i18n="planner_title">Multi-Platform Content Calendar</span>
+              </div>
+              <button class="btn-suite-primary" onclick="openSchedulePostModal()">
+                <i class="fa-solid fa-plus"></i> <span data-i18n="btn_schedule_post">Schedule Post</span>
+              </button>
+            </div>
+            <div class="suite-card-body">
+              <div class="planner-calendar-grid" id="plannerGridContainer">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TAB 4: UNIFIED INBOX
+             ========================================== -->
+        <div class="suite-tab-pane" id="tab_inbox">
+          <div class="suite-inbox-wrapper">
+            
+            <!-- Left Thread List -->
+            <div class="inbox-list-panel">
+              <div class="inbox-list-header">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <div style="font-weight:800; font-size:0.95rem;" data-i18n="inbox_title">Messages & Inquiries</div>
+                  <button class="btn-icon-action" onclick="openNewThreadModal()" title="Start New Conversation">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </div>
+                <div class="inbox-channel-filters">
+                  <button type="button" class="inbox-filter-btn active" data-channel="all" onclick="filterInbox('all')">All</button>
+                  <button type="button" class="inbox-filter-btn" data-channel="instagram" onclick="filterInbox('instagram')">Instagram</button>
+                  <button type="button" class="inbox-filter-btn" data-channel="whatsapp" onclick="filterInbox('whatsapp')">WhatsApp</button>
+                  <button type="button" class="inbox-filter-btn" data-channel="messenger" onclick="filterInbox('messenger')">Messenger</button>
+                  <button type="button" class="inbox-filter-btn" data-channel="web" onclick="filterInbox('web')">Web Inquiries</button>
+                </div>
+              </div>
+              <ul class="inbox-threads-list" id="inboxThreadsList">
+                <!-- Populated by JS -->
+              </ul>
+              <div id="inboxThreadsEmpty" class="suite-empty-state" style="display:none; padding:24px 12px;">
+                <div class="suite-empty-icon" style="width:40px; height:40px; font-size:1.1rem; margin-bottom:8px;"><i class="fa-solid fa-comments"></i></div>
+                <div class="suite-empty-title" style="font-size:0.9rem;" data-i18n="empty_inbox_title">No active conversations</div>
+                <div class="suite-empty-desc" style="font-size:0.75rem; margin-bottom:12px;" data-i18n="empty_inbox_desc">Client inquiries and website chat interactions will populate here.</div>
+                <button class="btn-suite-secondary" style="font-size:0.75rem; padding:5px 10px;" onclick="openNewThreadModal()" data-i18n="btn_start_chat">+ Start Conversation</button>
+              </div>
+            </div>
+
+            <!-- Right Active Chat -->
+            <div class="inbox-chat-panel">
+              <div class="chat-header">
+                <div class="chat-user-details">
+                  <div class="thread-avatar" id="chatHeaderAvatar">U</div>
+                  <div>
+                    <div style="font-weight:800; font-size:0.9rem;" id="chatActiveUserName">Select Conversation</div>
+                    <div style="font-size:0.72rem; color:var(--suite-text-muted);" id="chatActiveChannel">—</div>
+                  </div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn-suite-secondary" onclick="simulateInboundReply()" title="Simulate client answering for demo testing">
+                    <i class="fa-solid fa-robot"></i> <span data-i18n="btn_simulate_reply">Simulate Reply</span>
+                  </button>
+                  <button class="btn-suite-secondary" onclick="tagCurrentThread()" title="Tag priority">
+                    <i class="fa-solid fa-tag"></i> <span data-i18n="btn_tag_lead">Tag Lead</span>
+                  </button>
+                  <button class="btn-icon-action danger" onclick="deleteCurrentThread()" title="Delete conversation">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="chat-messages-area" id="chatMessagesContainer">
+                <!-- Messages -->
+              </div>
+
+              <form class="chat-input-row" onsubmit="sendChatMessage(event)">
+                <input type="text" id="chatTextInput" class="chat-text-input" placeholder="Type a message or automated response..." autocomplete="off">
+                <button type="submit" class="btn-suite-primary" style="padding:10px 18px;">
+                  <i class="fa-solid fa-paper-plane"></i> <span data-i18n="btn_send">Send</span>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TAB 5: LEAD CENTER (CRM)
+             ========================================== -->
+        <div class="suite-tab-pane" id="tab_leads">
+          <div class="suite-card-box">
+            <div class="suite-card-header">
+              <div class="suite-card-title">
+                <i class="fa-solid fa-users-gear" style="color:var(--suite-primary);"></i>
+                <span data-i18n="leads_crm_title">Incoming Leads Pipeline & CRM</span>
+              </div>
+              <div style="display:flex; gap:10px;">
+                <button class="btn-suite-secondary" onclick="exportLeadsCSV()">
+                  <i class="fa-solid fa-file-arrow-down"></i> <span data-i18n="btn_export_csv">Export CSV</span>
+                </button>
+                <button class="btn-suite-primary" onclick="openAddLeadModal()">
+                  <i class="fa-solid fa-user-plus"></i> <span data-i18n="btn_add_lead">Add Lead</span>
+                </button>
+              </div>
+            </div>
+            <div class="suite-card-body" style="padding-bottom:0;">
+              <div class="suite-toolbar-row">
+                <div class="suite-search-box">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="leadsSearchInput" class="suite-search-input" placeholder="Search leads by name, email, phone, or service..." oninput="handleLeadsSearch(this.value)">
+                </div>
+                <div class="suite-filter-pills">
+                  <button type="button" class="suite-filter-pill active" onclick="filterLeadsByStage('all', this)" data-i18n="filter_all_leads">All Leads</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterLeadsByStage('new', this)" data-i18n="filter_new">New</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterLeadsByStage('in_review', this)" data-i18n="filter_in_review">In Review</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterLeadsByStage('contacted', this)" data-i18n="filter_contacted">Contacted</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterLeadsByStage('proposal', this)" data-i18n="filter_proposal">Proposal Sent</button>
+                  <button type="button" class="suite-filter-pill" onclick="filterLeadsByStage('won', this)" data-i18n="filter_won">Deals Won</button>
+                </div>
+              </div>
+            </div>
+            <div class="suite-table-responsive">
+              <table class="suite-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="th_lead_email">Lead Name & Email</th>
+                    <th data-i18n="th_phone">Phone / WhatsApp</th>
+                    <th data-i18n="th_service">Service Area</th>
+                    <th data-i18n="th_budget">Estimated Budget</th>
+                    <th data-i18n="th_crm_stage">CRM Pipeline Stage</th>
+                    <th data-i18n="th_date_received">Date Received</th>
+                    <th data-i18n="th_actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="leadsTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+              <div id="leadsEmptyState" class="suite-empty-state" style="display:none;">
+                <div class="suite-empty-icon"><i class="fa-solid fa-user-plus"></i></div>
+                <div class="suite-empty-title" data-i18n="empty_leads_stage_title">No leads in this pipeline view</div>
+                <div class="suite-empty-desc" data-i18n="empty_leads_stage_desc">New inquiries submitted across the site will automatically populate here in real-time.</div>
+                <button class="btn-suite-primary" onclick="openAddLeadModal()">
+                  <i class="fa-solid fa-plus"></i> <span data-i18n="btn_add_lead">Add New Lead</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TAB 6: INSIGHTS & ANALYTICS
+             ========================================== -->
+        <div class="suite-tab-pane" id="tab_insights">
+          <div class="suite-split-layout">
+            
+            <div class="suite-card-box">
+              <div class="suite-card-header">
+                <div class="suite-card-title" data-i18n="insights_device_title">Device & Traffic Allocation</div>
+              </div>
+              <div class="suite-card-body" id="insightsDeviceBreakdown">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <div class="suite-card-box">
+              <div class="suite-card-header">
+                <div class="suite-card-title" data-i18n="insights_network_title">Network Revenue & Spend Distribution</div>
+              </div>
+              <div class="suite-card-body" id="insightsChannelDistribution" style="display:flex; flex-direction:column; gap:10px;">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+          </div>
+
+          <div class="suite-card-box">
+            <div class="suite-card-header">
+              <div class="suite-card-title" data-i18n="insights_diagnostics_title">Live Performance Diagnostics</div>
+            </div>
+            <div class="suite-card-body" id="insightsPerformanceSummary">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ==========================================
+             TAB 7: SETTINGS & TRACKING
+             ========================================== -->
+        <div class="suite-tab-pane" id="tab_settings">
+          
+          <!-- Connected Social Accounts & Assets Section -->
+          <div class="settings-section-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px;">
+              <div>
+                <div class="settings-section-title">Connected Social Channels & Ad Assets</div>
+                <div class="settings-section-desc">Link and manage your Instagram Business ID, Facebook Page, WhatsApp Business API, and Ad Network Accounts.</div>
+              </div>
+              <button type="button" class="btn-suite-primary" onclick="openConnectAssetModal()" style="font-size:0.8rem; padding:6px 14px;">
+                <i class="fa-solid fa-plus"></i> Connect Channel / ID
+              </button>
+            </div>
+
+            <div class="social-asset-grid" id="connectedSocialAssetsGrid">
+              <!-- Dynamically populated from JS (Facebook, Instagram, WhatsApp, Google Ads, TikTok Ads) -->
+            </div>
+          </div>
+
+          <div class="settings-section-card">
+            <div class="settings-section-title" data-i18n="settings_title">Business Account & Pixel Health</div>
+            <div class="settings-section-desc" data-i18n="settings_desc">Manage your business profile, Meta Pixel ID, Conversions API (CAPI) tokens, and automated lead alerts.</div>
+            
+            <form id="settingsForm" onsubmit="handleSaveSettings(event)">
+              <div class="settings-form-grid">
+                <div class="settings-field-group">
+                  <label data-i18n="label_business_name">Business Account Name</label>
+                  <input type="text" id="settingAccountName" class="settings-input" required>
+                </div>
+                <div class="settings-field-group">
+                  <label data-i18n="label_ad_account_id">Ad Account ID</label>
+                  <input type="text" id="settingAdAccountId" class="settings-input" placeholder="act_4920194829">
+                </div>
+                <div class="settings-field-group">
+                  <label data-i18n="label_meta_pixel_id">Meta Pixel ID</label>
+                  <input type="text" id="settingPixelId" class="settings-input" placeholder="pix_8849201948">
+                </div>
+                <div class="settings-field-group">
+                  <label data-i18n="label_capi_token">Conversions API (CAPI) Access Token</label>
+                  <input type="password" id="settingCapiToken" class="settings-input" placeholder="EAAGm0PX4ZCb... (Server-side tracking)">
+                </div>
+                <div class="settings-field-group">
+                  <label data-i18n="label_currency">Currency & Symbol</label>
+                  <select id="settingCurrency" class="settings-input" onchange="changeSuiteCurrency(this.value)">
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="INR">INR (₹)</option>
+                    <option value="CAD">CAD ($)</option>
+                    <option value="AUD">AUD ($)</option>
+                    <option value="AED">AED (AED)</option>
+                    <option value="JPY">JPY (¥)</option>
+                  </select>
+                </div>
+                <div class="settings-field-group">
+                  <label data-i18n="label_notify_email">Alert Email Notification</label>
+                  <input type="email" id="settingNotifyEmail" class="settings-input" placeholder="growth@company.com">
+                </div>
+              </div>
+
+              <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+                <button type="submit" class="btn-suite-primary">
+                  <i class="fa-solid fa-floppy-disk"></i> <span data-i18n="btn_save_settings">Save Settings</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Data & Storage Reset Management -->
+          <div class="settings-section-card">
+            <div class="settings-section-title" data-i18n="data_management_title">Data Storage & Diagnostics</div>
+            <div class="settings-section-desc" data-i18n="data_management_desc">Manage your persistent browser storage, backup configurations, or purge all data to clean state.</div>
+            
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <button class="btn-suite-secondary" onclick="exportDataBackupJSON()">
+                <i class="fa-solid fa-download"></i> <span data-i18n="btn_export_backup">Export JSON Backup</span>
+              </button>
+
+              <button class="btn-icon-action danger" style="padding:10px 16px; font-weight:700;" onclick="confirmPurgeAllData()">
+                <i class="fa-solid fa-trash-can"></i> <span data-i18n="btn_purge_data">Purge All Data (Start Clean)</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- ==========================================================
+       FULL-WINDOW META ADS MANAGER STUDIO (FULLSCREEN ENGINE)
+       ========================================================== -->
+  <div class="studio-fullscreen-overlay" id="createCampaignStudio">
+    
+    <!-- Studio Topbar -->
+    <div class="studio-topbar">
+      <div class="studio-topbar-left">
+        <button class="studio-btn-close" onclick="closeCreateCampaignStudio()" title="Close Studio">&times;</button>
+        <div class="studio-breadcrumb">
+          <span>Meta Ads Manager</span>
+          <i class="fa-solid fa-angle-right" style="font-size:0.75rem; color:#94A3B8;"></i>
+          <span id="studioBreadcrumbName" style="color:var(--suite-text-dark);">New Campaign Creation</span>
+        </div>
+        <div class="studio-draft-badge">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <span>Draft In Progress</span>
+        </div>
+      </div>
+
+      <div class="studio-topbar-right">
+        <button type="button" class="btn-suite-secondary" onclick="closeCreateCampaignStudio()">
+          <i class="fa-solid fa-xmark"></i> Discard / Close
+        </button>
+        <button type="button" class="btn-suite-primary" onclick="handleStudioPublishCampaign()">
+          <i class="fa-solid fa-rocket"></i> Publish Campaign &rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- Studio Workspace 3-Tier Body -->
+    <div class="studio-workspace-body">
+      
+      <!-- Left 3-Tier Hierarchy Tree -->
+      <aside class="studio-tree-sidebar">
+        <div class="studio-tree-title">Campaign Hierarchy</div>
+        
+        <div class="studio-tree-step active" id="treeStepCampaign" onclick="switchStudioStep('campaign')">
+          <div class="studio-tree-icon"><i class="fa-solid fa-folder-open"></i></div>
+          <div>
+            <div>1. Campaign Level</div>
+            <div style="font-size:0.7rem; color:var(--suite-text-muted);" id="treeSubCampaign">Objective & Budget</div>
+          </div>
+        </div>
+
+        <div class="studio-tree-step" id="treeStepAdSet" onclick="switchStudioStep('adset')">
+          <div class="studio-tree-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div>
+            <div>2. Ad Set Level</div>
+            <div style="font-size:0.7rem; color:var(--suite-text-muted);" id="treeSubAdSet">Audience & Placements</div>
+          </div>
+        </div>
+
+        <div class="studio-tree-step" id="treeStepAd" onclick="switchStudioStep('ad')">
+          <div class="studio-tree-icon"><i class="fa-solid fa-file-lines"></i></div>
+          <div>
+            <div>3. Ad Creative</div>
+            <div style="font-size:0.7rem; color:var(--suite-text-muted);" id="treeSubAd">Media, Copy & Destination</div>
+          </div>
+        </div>
+
+        <div style="margin-top:auto; padding:12px 8px; background:#F8FAFC; border-radius:8px; border:1px solid var(--suite-border); font-size:0.74rem;">
+          <div style="font-weight:700; color:var(--suite-text-dark); margin-bottom:2px;"><i class="fa-solid fa-shield-halved" style="color:var(--suite-primary);"></i> Meta Advantage+</div>
+          <div style="color:var(--suite-text-secondary);">Real-time budget optimization and algorithmic audience delivery active.</div>
+        </div>
+      </aside>
+
+      <!-- Center Form Editing Canvas -->
+      <div class="studio-form-canvas">
+        <div class="studio-form-container">
+          
+          <!-- STEP 1: CAMPAIGN LEVEL -->
+          <div class="studio-step-pane active" id="studioPaneCampaign">
+            <div class="studio-card">
+              <div class="studio-card-title">
+                <i class="fa-solid fa-bullhorn" style="color:var(--suite-primary);"></i>
+                <span>Campaign Details & Identity</span>
+              </div>
+              <div class="studio-card-desc">Define your campaign name, network distribution, and core conversion objective.</div>
+              
+              <div style="margin-bottom:18px;">
+                <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Campaign Name *</label>
+                <input type="text" id="studioCmpName" class="settings-input" value="Q4 Scaling - High Intent Conversion Sprint" oninput="updateStudioLivePreview()" required>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px;">
+                <div>
+                  <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Platform Network</label>
+                  <select id="studioCmpPlatform" class="settings-input" onchange="updateStudioLivePreview()">
+                    <option value="meta">Meta (Facebook & Instagram Feed/Reels)</option>
+                    <option value="google">Google Search & Performance Max</option>
+                    <option value="tiktok">TikTok Ads Manager</option>
+                    <option value="linkedin">LinkedIn Sponsored Growth</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Daily Budget (<span class="suite-curr-symbol">$</span>) *</label>
+                  <input type="number" id="studioCmpBudget" class="settings-input" value="150" min="10" step="5" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campaign Objective Selector Cards -->
+            <div class="studio-card">
+              <div class="studio-card-title">
+                <i class="fa-solid fa-bullseye" style="color:var(--suite-primary);"></i>
+                <span>Choose a Campaign Objective</span>
+              </div>
+              <div class="studio-card-desc">Select the primary business outcome you want this campaign to drive.</div>
+
+              <div class="studio-objective-grid">
+                
+                <div class="studio-objective-option selected" data-obj="sales" onclick="selectStudioObjective('sales', this)">
+                  <div>
+                    <div class="studio-obj-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="studio-obj-name">Sales & Revenue</div>
+                    <div class="studio-obj-desc">Find people likely to purchase products or services.</div>
+                  </div>
+                </div>
+
+                <div class="studio-objective-option" data-obj="leads" onclick="selectStudioObjective('leads', this)">
+                  <div>
+                    <div class="studio-obj-icon"><i class="fa-solid fa-user-plus"></i></div>
+                    <div class="studio-obj-name">Leads & Inquiries</div>
+                    <div class="studio-obj-desc">Collect qualified leads via instant forms, Messenger, or phone.</div>
+                  </div>
+                </div>
+
+                <div class="studio-objective-option" data-obj="traffic" onclick="selectStudioObjective('traffic', this)">
+                  <div>
+                    <div class="studio-obj-icon"><i class="fa-solid fa-arrow-pointer"></i></div>
+                    <div class="studio-obj-name">Traffic</div>
+                    <div class="studio-obj-desc">Send high-intent visitors to your website or landing page.</div>
+                  </div>
+                </div>
+
+                <div class="studio-objective-option" data-obj="engagement" onclick="selectStudioObjective('engagement', this)">
+                  <div>
+                    <div class="studio-obj-icon"><i class="fa-solid fa-comments"></i></div>
+                    <div class="studio-obj-name">Engagement</div>
+                    <div class="studio-obj-desc">Get more video views, post shares, and messaging chats.</div>
+                  </div>
+                </div>
+
+                <div class="studio-objective-option" data-obj="app" onclick="selectStudioObjective('app', this)">
+                  <div>
+                    <div class="studio-obj-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <div class="studio-obj-name">App Promotion</div>
+                    <div class="studio-obj-desc">Find new users to install and engage with your app.</div>
+                  </div>
+                </div>
+
+                <div class="studio-objective-option" data-obj="awareness" onclick="selectStudioObjective('awareness', this)">
+                  <div>
+                    <div class="studio-obj-icon"><i class="fa-solid fa-eye"></i></div>
+                    <div class="studio-obj-name">Awareness</div>
+                    <div class="studio-obj-desc">Maximize reach and brand recall across targeted demographics.</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end;">
+              <button type="button" class="btn-suite-primary" onclick="switchStudioStep('adset')">
+                Next: Ad Set & Audience &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: AD SET LEVEL -->
+          <div class="studio-step-pane" id="studioPaneAdSet">
+            <div class="studio-card">
+              <div class="studio-card-title">
+                <i class="fa-solid fa-users" style="color:var(--suite-primary);"></i>
+                <span>Audience Demographics & Targeting</span>
+              </div>
+              <div class="studio-card-desc">Define geographic locations, age criteria, and detailed interest segments.</div>
+
+              <div style="margin-bottom:16px;">
+                <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Target Locations</label>
+                <input type="text" id="studioAudienceLocation" class="settings-input" value="United States, Canada, United Kingdom, Australia">
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                <div>
+                  <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Age Range</label>
+                  <select class="settings-input">
+                    <option>21 - 55+ years</option>
+                    <option>18 - 65+ years</option>
+                    <option>25 - 45 years</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Gender</label>
+                  <select class="settings-input">
+                    <option>All Genders</option>
+                    <option>Men</option>
+                    <option>Women</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Detailed Interest & Behavior Targeting</label>
+                <input type="text" class="settings-input" value="Digital Marketing, E-commerce, Business Scaling, SaaS, Entrepreneurship">
+              </div>
+            </div>
+
+            <div class="studio-card">
+              <div class="studio-card-title">
+                <i class="fa-solid fa-layer-group" style="color:var(--suite-primary);"></i>
+                <span>Placements & Algorithm Delivery</span>
+              </div>
+              <div class="studio-card-desc">Choose Meta Advantage+ automatic placements or customize destination feed slots.</div>
+
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <label style="display:flex; align-items:center; gap:10px; padding:10px; background:#F8FAFC; border-radius:8px; cursor:pointer;">
+                  <input type="radio" name="placementsRadio" checked>
+                  <div>
+                    <div style="font-weight:700; font-size:0.85rem;">Advantage+ Placements (Recommended)</div>
+                    <div style="font-size:0.75rem; color:var(--suite-text-muted);">Automatically allocate ad spend across Feeds, Stories, Reels, and Search for lowest cost per result.</div>
+                  </div>
+                </label>
+                <label style="display:flex; align-items:center; gap:10px; padding:10px; background:#F8FAFC; border-radius:8px; cursor:pointer;">
+                  <input type="radio" name="placementsRadio">
+                  <div>
+                    <div style="font-weight:700; font-size:0.85rem;">Manual Placements</div>
+                    <div style="font-size:0.75rem; color:var(--suite-text-muted);">Manually select specific platforms (Instagram Only, Facebook Feeds, TikTok UGC).</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between;">
+              <button type="button" class="btn-suite-secondary" onclick="switchStudioStep('campaign')">
+                &larr; Back: Campaign
+              </button>
+              <button type="button" class="btn-suite-primary" onclick="switchStudioStep('ad')">
+                Next: Ad Creative & Copy &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: AD CREATIVE LEVEL -->
+          <div class="studio-step-pane" id="studioPaneAd">
+            
+            <!-- Ad Identity & Social Handle Link -->
+            <div class="studio-card">
+              <div class="studio-card-title">
+                <i class="fa-brands fa-meta" style="color:var(--suite-primary);"></i>
+                <span>Identity & Connected Social Assets</span>
+              </div>
+              <div class="studio-card-desc">Choose the Facebook Page and Instagram Account representing your business in this ad.</div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <div>
+                  <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">
+                    <i class="fa-brands fa-facebook" style="color:#0052FF;"></i> Facebook Page
+                  </label>
+                  <select id="studioAdFbPage" class="settings-input" onchange="updateStudioLivePreview()">
+                    <option value="Pixlark Marketing Official">Pixlark Marketing Official (Connected)</option>
+                    <option value="NovaStore Retail Pro">NovaStore Retail Pro (Connected)</option>
+                    <option value="Apex Brand Workspace">Apex Brand Workspace (Connected)</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">
+                    <i class="fa-brands fa-instagram" style="color:#E1306C;"></i> Instagram Account
+                  </label>
+                  <select id="studioAdIgAccount" class="settings-input" onchange="updateStudioLivePreview()">
+                    <option value="@pixlark.growth">@pixlark.growth (Verified)</option>
+                    <option value="@novastore.official">@novastore.official (Verified)</option>
+                    <option value="@apex.growth.lab">@apex.growth.lab (Verified)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-card">
+              <div class="studio-card-title">
+                <i class="fa-solid fa-pen-nib" style="color:var(--suite-primary);"></i>
+                <span>Ad Creative & Copywriting</span>
+              </div>
+              <div class="studio-card-desc">Craft your ad copy, headlines, call to action, and destination landing page.</div>
+
+              <div style="margin-bottom:16px;">
+                <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Primary Copy / Hook *</label>
+                <textarea id="studioAdCopy" rows="4" class="settings-input" style="font-family:inherit;" oninput="updateStudioLivePreview()">Are you ready to 4x your inbound pipeline? Discover how our multi-channel growth systems convert high-intent buyers into high-LTV customers.</textarea>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                <div>
+                  <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Headline *</label>
+                  <input type="text" id="studioAdHeadline" class="settings-input" value="Scale Your Revenue With Pixlark Suite" oninput="updateStudioLivePreview()" required>
+                </div>
+                <div>
+                  <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Call To Action (CTA)</label>
+                  <select id="studioAdCta" class="settings-input" onchange="updateStudioLivePreview()">
+                    <option value="Shop Now">Shop Now</option>
+                    <option value="Learn More" selected>Learn More</option>
+                    <option value="Get Quote">Get Quote</option>
+                    <option value="Sign Up">Sign Up</option>
+                    <option value="Contact Us">Contact Us</option>
+                    <option value="Book Now">Book Now</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="margin-bottom:16px;">
+                <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Destination Website URL *</label>
+                <input type="url" id="studioAdUrl" class="settings-input" value="https://pixlarkmarketing.com" oninput="updateStudioLivePreview()">
+              </div>
+
+              <div>
+                <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Event Tracking Pixel</label>
+                <input type="text" class="settings-input" value="● Active: Meta Pixel ID pix_8849201948 (CAPI Enabled)" readonly style="background:#F1F5F9; color:var(--suite-success); font-weight:700;">
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between;">
+              <button type="button" class="btn-suite-secondary" onclick="switchStudioStep('adset')">
+                &larr; Back: Ad Set
+              </button>
+              <button type="button" class="btn-suite-primary" onclick="handleStudioPublishCampaign()">
+                <i class="fa-solid fa-rocket"></i> Publish Campaign & Launch &rarr;
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Live Ad Mockup Preview Panel -->
+      <aside class="studio-preview-sidebar">
+        <div class="studio-preview-header">
+          <span>Ad Preview</span>
+          <span style="font-size:0.72rem; color:var(--suite-primary); font-weight:700;">
+            <i class="fa-brands fa-meta"></i> Meta Feed
+          </span>
+        </div>
+
+        <div class="meta-ad-preview-mockup">
+          <div class="meta-preview-top">
+            <div class="meta-preview-avatar" id="prevAdAvatar">P</div>
+            <div>
+              <div class="meta-preview-name" id="prevAdBrandName">Pixlark Marketing</div>
+              <div class="meta-preview-sub">
+                <span id="prevAdIgHandle" style="color:var(--suite-primary); font-weight:700;">@pixlark.growth</span> &bull; <span>Sponsored</span> &bull; <i class="fa-solid fa-globe" style="font-size:0.65rem;"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="meta-preview-copy" id="prevAdCopy">
+            Are you ready to 4x your inbound pipeline? Discover how our multi-channel growth systems convert high-intent buyers into high-LTV customers.
+          </div>
+
+          <div class="meta-preview-media">
+            <div>
+              <div style="font-size:1.8rem; margin-bottom:6px;"><i class="fa-solid fa-chart-simple"></i></div>
+              <div style="font-weight:800; font-size:1.1rem;" id="prevAdBannerHeadline">Scale Your Revenue</div>
+              <div style="font-size:0.75rem; opacity:0.9;">High-Performance Paid Media Operations</div>
+            </div>
+          </div>
+
+          <div class="meta-preview-bottom-bar">
+            <div>
+              <div class="meta-preview-url" id="prevAdDomain">PIXLARKMARKETING.COM</div>
+              <div class="meta-preview-headline" id="prevAdHeadline">Scale Your Revenue With Pixlark Suite</div>
+            </div>
+            <button class="meta-preview-cta-btn" id="prevAdCtaBtn">Learn More</button>
+          </div>
+        </div>
+
+        <div style="margin-top:16px; padding:12px; background:#F8FAFC; border:1px solid var(--suite-border); border-radius:8px; font-size:0.75rem; color:var(--suite-text-secondary);">
+          <div style="font-weight:700; color:var(--suite-text-dark); margin-bottom:4px;">
+            <i class="fa-solid fa-circle-check" style="color:var(--suite-success);"></i> Quality Score: High
+          </div>
+          <div>Ad creative complies with Meta Commercial Advertising policies and CAPI server-side event tracking.</div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODALS: SCHEDULE POST
+       ========================================================== -->
+  <div class="suite-modal-backdrop" id="schedulePostModal">
+    <div class="suite-modal-card">
+      <div class="suite-modal-header">
+        <div class="suite-modal-title">Schedule Multi-Channel Social Post</div>
+        <button class="suite-modal-close" onclick="closeScheduleModal()">&times;</button>
+      </div>
+      <form id="schedulePostForm" onsubmit="handleSchedulePostSubmit(event)">
+        <div class="suite-modal-body">
+          <div style="margin-bottom:16px;">
+            <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Destination Channels</label>
+            <select id="postPlatformSelect" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+              <option value="meta">Instagram & Facebook Page</option>
+              <option value="tiktok">TikTok Business Channel</option>
+              <option value="google">Google Business Profile</option>
+              <option value="linkedin">LinkedIn Company Page</option>
+            </select>
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Post Caption & Copy *</label>
+            <textarea id="postCaptionInput" rows="3" placeholder="Write your post caption, hook, and call to action..." required style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem; font-family:inherit;"></textarea>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Calendar Day</label>
+              <select id="postDaySelect" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+                <option value="Mon">Monday</option>
+                <option value="Tue">Tuesday</option>
+                <option value="Wed">Wednesday</option>
+                <option value="Thu">Thursday</option>
+                <option value="Fri">Friday</option>
+                <option value="Sat">Saturday</option>
+                <option value="Sun">Sunday</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Time Slot</label>
+              <input type="text" id="postTimeInput" value="10:30 AM" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+            </div>
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Initial Status</label>
+              <select id="postStatusSelect" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+                <option value="Scheduled">Scheduled</option>
+                <option value="Published">Published</option>
+                <option value="Draft">Draft</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="suite-modal-footer">
+          <button type="button" class="btn-suite-secondary" onclick="closeScheduleModal()">Cancel</button>
+          <button type="submit" class="btn-suite-primary">Save to Calendar &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODALS: ADD INBOUND CRM LEAD
+       ========================================================== -->
+  <div class="suite-modal-backdrop" id="addLeadModal">
+    <div class="suite-modal-card">
+      <div class="suite-modal-header">
+        <div class="suite-modal-title">Record Inbound CRM Lead</div>
+        <button class="suite-modal-close" onclick="closeAddLeadModal()">&times;</button>
+      </div>
+      <form id="addLeadForm" onsubmit="handleAddLeadSubmit(event)">
+        <div class="suite-modal-body">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Full Name *</label>
+              <input type="text" id="newLeadName" placeholder="e.g. Alex Morgan" required style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+            </div>
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Business Email *</label>
+              <input type="email" id="newLeadEmail" placeholder="alex@company.com" required style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Phone / WhatsApp</label>
+              <input type="text" id="newLeadPhone" placeholder="+1 (555) 019-2834" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+            </div>
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Service Area</label>
+              <select id="newLeadService" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+                <option value="Paid Online Ads">Paid Online Ads (Meta/Google)</option>
+                <option value="Commercial SEO">Commercial SEO & Search</option>
+                <option value="Lead Gen Engine">Lead Generation Funnel</option>
+                <option value="Full-Service Marketing">Full-Service Growth</option>
+                <option value="Video Sprint">Short-Form Video Sprint</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Estimated Monthly Budget</label>
+              <select id="newLeadBudget" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+                <option value="$1,000–$2,500">$1,000–$2,500</option>
+                <option value="$2,500–$5,000">$2,500–$5,000</option>
+                <option value="$5,000+">$5,000+ / month</option>
+                <option value="Custom Enterprise">Custom Enterprise</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Pipeline Stage</label>
+              <select id="newLeadStage" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+                <option value="new">New Inquiry</option>
+                <option value="in_review">In Review</option>
+                <option value="contacted">Contacted</option>
+                <option value="proposal">Proposal Sent</option>
+                <option value="won">Deal Won</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Inquiry Notes / Request</label>
+            <textarea id="newLeadNotes" rows="2" placeholder="Key prospect requirements..." style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem; font-family:inherit;"></textarea>
+          </div>
+        </div>
+        <div class="suite-modal-footer">
+          <button type="button" class="btn-suite-secondary" onclick="closeAddLeadModal()">Cancel</button>
+          <button type="submit" class="btn-suite-primary">Record Lead &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODALS: NEW CONVERSATION (INBOX)
+       ========================================================== -->
+  <div class="suite-modal-backdrop" id="newThreadModal">
+    <div class="suite-modal-card">
+      <div class="suite-modal-header">
+        <div class="suite-modal-title">Start New Inbound Conversation</div>
+        <button class="suite-modal-close" onclick="closeNewThreadModal()">&times;</button>
+      </div>
+      <form id="newThreadForm" onsubmit="handleNewThreadSubmit(event)">
+        <div class="suite-modal-body">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Contact Name *</label>
+              <input type="text" id="newThreadName" placeholder="e.g. Jordan Lee" required style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+            </div>
+            <div>
+              <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Channel</label>
+              <select id="newThreadChannel" style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+                <option value="instagram">Instagram Direct</option>
+                <option value="whatsapp">WhatsApp Business</option>
+                <option value="messenger">Facebook Messenger</option>
+                <option value="web">Website Chat Widget</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Initial Inbound Message *</label>
+            <textarea id="newThreadMessage" rows="3" placeholder="e.g. Hi! We're looking to scale our digital campaigns this month..." required style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem; font-family:inherit;"></textarea>
+          </div>
+        </div>
+        <div class="suite-modal-footer">
+          <button type="button" class="btn-suite-secondary" onclick="closeNewThreadModal()">Cancel</button>
+          <button type="submit" class="btn-suite-primary">Create Conversation Thread &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODALS: ACCOUNT SWITCHER & CREATOR
+       ========================================================== -->
+  <div class="suite-modal-backdrop" id="accountSwitcherModal">
+    <div class="suite-modal-card">
+      <div class="suite-modal-header">
+        <div class="suite-modal-title">Business Workspaces</div>
+        <button class="suite-modal-close" onclick="closeAccountSwitcherModal()">&times;</button>
+      </div>
+      <div class="suite-modal-body">
+        <div style="font-size:0.82rem; color:var(--suite-text-secondary); margin-bottom:14px;">Select an active business workspace or launch a new client portfolio.</div>
+        <div id="accountsListContainer" style="display:flex; flex-direction:column; gap:8px; margin-bottom:18px;">
+          <!-- Populated by JS -->
+        </div>
+
+        <div style="border-top:1px solid var(--suite-border); padding-top:16px;">
+          <div style="font-weight:800; font-size:0.9rem; margin-bottom:8px;">+ Add New Business Workspace</div>
+          <form onsubmit="handleCreateNewAccount(event)" style="display:flex; gap:8px;">
+            <input type="text" id="newAccountInputName" placeholder="e.g. Apex Dental Group" required style="flex:1; padding:8px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.85rem;">
+            <button type="submit" class="btn-suite-primary" style="padding:8px 14px;">Create</button>
+          </form>
+        </div>
+      </div>
+      <div class="suite-modal-footer">
+        <button type="button" class="btn-suite-secondary" onclick="closeAccountSwitcherModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODALS: EDIT CAMPAIGN BUDGET
+       ========================================================== -->
+  <div class="suite-modal-backdrop" id="editBudgetModal">
+    <div class="suite-modal-card" style="max-width:420px;">
+      <div class="suite-modal-header">
+        <div class="suite-modal-title">Edit Campaign Daily Budget</div>
+        <button class="suite-modal-close" onclick="closeEditBudgetModal()">&times;</button>
+      </div>
+      <form id="editBudgetForm" onsubmit="handleSaveCampaignBudget(event)">
+        <div class="suite-modal-body">
+          <input type="hidden" id="editBudgetCmpId">
+          <div style="font-weight:700; margin-bottom:12px; font-size:0.88rem;" id="editBudgetCmpName">Campaign</div>
+          <div>
+            <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Daily Budget (<span class="suite-curr-symbol">$</span>) *</label>
+            <input type="number" id="editBudgetInput" min="5" step="5" required style="width:100%; padding:10px 12px; border:1px solid var(--suite-border); border-radius:8px; font-size:0.88rem;">
+          </div>
+        </div>
+        <div class="suite-modal-footer">
+          <button type="button" class="btn-suite-secondary" onclick="closeEditBudgetModal()">Cancel</button>
+          <button type="submit" class="btn-suite-primary">Update Budget</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MODALS: CONNECT SOCIAL CHANNEL & ASSET ID
+       ========================================================== -->
+  <div class="suite-modal-backdrop" id="connectAssetModal">
+    <div class="suite-modal-card" style="max-width:460px;">
+      <div class="suite-modal-header">
+        <div class="suite-modal-title">Link Social Channel / Ad Asset</div>
+        <button class="suite-modal-close" onclick="closeConnectAssetModal()">&times;</button>
+      </div>
+      <form id="connectAssetForm" onsubmit="handleSaveSocialAsset(event)">
+        <div class="suite-modal-body">
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Platform Asset Type *</label>
+            <select id="assetTypeSelect" class="settings-input" onchange="updateAssetFormFields(this.value)">
+              <option value="instagram">Instagram Business Profile (@handle)</option>
+              <option value="meta">Facebook Business Page</option>
+              <option value="whatsapp">WhatsApp Business API Number</option>
+              <option value="google">Google Ads Customer ID</option>
+              <option value="tiktok">TikTok Advertiser Account</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;" id="assetNameLabel">Account / Page Name *</label>
+            <input type="text" id="assetNameInput" class="settings-input" placeholder="e.g. Pixlark Growth Official" required>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;" id="assetHandleLabel">Handle or ID / Phone Number *</label>
+            <input type="text" id="assetHandleInput" class="settings-input" placeholder="e.g. @pixlark.growth" required>
+          </div>
+        </div>
+        <div class="suite-modal-footer">
+          <button type="button" class="btn-suite-secondary" onclick="closeConnectAssetModal()">Cancel</button>
+          <button type="submit" class="btn-suite-primary">
+            <i class="fa-solid fa-link"></i> Connect & Authorize
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase Compatibility SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+
+  <!-- JavaScript Controller -->
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

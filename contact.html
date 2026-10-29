@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Contact Pixlark Marketing — Speak directly with our growth directors to request a complimentary performance audit and custom digital marketing roadmap.">
+  <title>Contact &bull; Pixlark Marketing</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Modern Digital Agency Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Fixed Background Video Layer (Persists while scrolling) -->
+  <div class="fixed-video-background-layer" aria-hidden="true">
+    <video id="bgHeroVideo" autoplay loop muted playsinline class="fixed-fullscreen-video">
+      <source src="assets/images/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Top Header -->
+  <header class="modern-site-header" id="header">
+    <a href="index.html" class="header-center-logo" aria-label="Pixlark Marketing Home">
+      <img src="assets/images/logo.png" alt="Pixlark Marketing" class="header-brand-logo-full">
+    </a>
+
+    <nav class="header-left-nav" aria-label="Main Navigation">
+      <a href="index.html" class="header-nav-link" data-i18n="nav_home">Home</a>
+      <a href="services.html" class="header-nav-link" data-i18n="nav_services">Services</a>
+      <a href="why-pixlark.html" class="header-nav-link" data-i18n="nav_why">Why Choose Us</a>
+      <a href="solutions.html" class="header-nav-link" data-i18n="nav_pricing">Pricing &amp; Plans</a>
+      <a href="faq.html" class="header-nav-link" data-i18n="nav_faq">FAQ</a>
+      <a href="contact.html" class="header-nav-link active" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="header-right-actions">
+      <select id="languageSelector" class="header-select-control header-lang-select" aria-label="Select Language"
+        onchange="window.setPixlarkLanguage &amp; window.setPixlarkLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="hi">हिन्दी</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+      </select>
+      <a href="auth.html" class="header-nav-link"
+        style="font-weight:700; font-size:0.86rem; color:var(--text-dark); display:inline-flex; align-items:center; gap:6px;">
+        <i class="fa-solid fa-user-lock" style="color:var(--bg-blue, #0052FF); font-size:0.88rem;"></i>
+        <span data-i18n="nav_suite">Client Suite</span>
+      </a>
+      <a href="contact.html" class="header-btn-hire">
+        <span data-i18n="nav_hire">Work With Us &rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero Banner -->
+    <section class="inner-page-hero-section">
+      <div class="container-modern">
+        <div class="inner-hero-tag" data-i18n="hero_tag_contact">
+          <i class="fa-solid fa-paper-plane"></i> Get In Touch
+        </div>
+        <h1 class="inner-hero-title" data-i18n="hero_title_contact">
+          Let's talk about <span class="highlight-blue">growing your business</span>.
+        </h1>
+        <p class="inner-hero-desc" data-i18n="hero_desc_contact">
+          Tell us what you are trying to improve, which channels you use today, and where the current bottleneck is. We
+          will review the details and reply within one business day.
+        </p>
+      </div>
+    </section>
+
+    <!-- Intake Form -->
+    <section class="discovery-form-section">
+      <div class="container-modern">
+        <div class="intake-modern-card">
+          <div class="section-tag-asterisk" data-i18n="form_tag"><i class="fa-solid fa-file-signature"></i> Send A
+            Message</div>
+          <h2
+            style="font-family:var(--font-heading); font-size:clamp(1.8rem, 2.8vw, 2.6rem); font-weight:900; letter-spacing:-0.03em; margin-bottom:12px; color:var(--text-dark);"
+            data-i18n="form_title">
+            Contact Us
+          </h2>
+          <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.6; margin-bottom:28px;"
+            data-i18n="form_desc">
+            Share your business model, current marketing activity, goals, and timeline. We will use that context to
+            suggest the most relevant next step.
+          </p>
+
+          <form id="contactPageForm" novalidate>
+            <div class="form-grid-2col">
+              <input type="text" name="fullName" class="input-modern" placeholder="Your Name *"
+                data-i18n-placeholder="form_name_ph" required>
+              <input type="email" name="email" class="input-modern" placeholder="Email Address *"
+                data-i18n-placeholder="form_email_ph" required>
+            </div>
+            <div class="form-grid-2col">
+              <input type="tel" name="phone" class="input-modern" placeholder="Phone Number / WhatsApp"
+                data-i18n-placeholder="form_phone_ph">
+              <input type="url" name="website" class="input-modern" placeholder="Website or Business Name"
+                data-i18n-placeholder="form_website_ph">
+            </div>
+            <div class="form-grid-2col">
+              <select name="service" class="input-modern">
+                <option value="" data-i18n="form_service_select">Select a Service of Interest</option>
+                <option value="Paid Ads">Paid Ads</option>
+                <option value="Commercial SEO">Commercial SEO</option>
+                <option value="Lead Funnels">Lead Funnels</option>
+                <option value="All Services">All Services</option>
+                <option value="Not Sure">Not Sure</option>
+              </select>
+              <select name="industry" class="input-modern">
+                <option value="" data-i18n="form_industry_select">Your Industry</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="SaaS">SaaS</option>
+                <option value="IT/Technology">IT/Technology</option>
+                <option value="Professional Services">Professional Services</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Financial Services">Financial Services</option>
+                <option value="Education">Education</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Retail">Retail</option>
+                <option value="Hospitality">Hospitality</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-grid-2col">
+              <select name="region" class="input-modern">
+                <option value="" data-i18n="form_region_select">Your Region</option>
+                <option value="North America">North America</option>
+                <option value="South America">South America</option>
+                <option value="Europe">Europe</option>
+                <option value="Asia">Asia</option>
+                <option value="Africa">Africa</option>
+                <option value="Middle East">Middle East</option>
+                <option value="Oceania">Oceania</option>
+              </select>
+              <select name="currentMarketing" class="input-modern">
+                <option value="" data-i18n="form_marketing_select">Current Marketing Channels</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="Facebook/Instagram">Facebook/Instagram</option>
+                <option value="SEO">SEO</option>
+                <option value="Email Marketing">Email Marketing</option>
+                <option value="None">None / Just Starting</option>
+                <option value="Multiple">Multiple Channels</option>
+              </select>
+            </div>
+            <div style="margin-bottom:24px;">
+              <label
+                style="display:block; font-weight:600; margin-bottom:8px; color:var(--text-dark); font-size:0.9rem;"
+                data-i18n="form_goal_label">What's your main goal?</label>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" name="goals" value="More Sales" style="cursor:pointer;">
+                  <span data-i18n="form_goal_sales">More Sales / Revenue</span>
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" name="goals" value="More Leads" style="cursor:pointer;">
+                  <span data-i18n="form_goal_leads">More Leads</span>
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" name="goals" value="Website Traffic" style="cursor:pointer;">
+                  <span data-i18n="form_goal_traffic">Website Traffic</span>
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                  <input type="checkbox" name="goals" value="Brand Awareness" style="cursor:pointer;">
+                  <span data-i18n="form_goal_brand">Brand Awareness</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-grid-2col">
+              <select name="budget" class="input-modern">
+                <option value="" data-i18n="form_budget_select">Monthly Budget</option>
+                <option value="Under 500">Under $500</option>
+                <option value="500-1000">$500 - $1,000</option>
+                <option value="1000-5000">$1,000 - $5,000</option>
+                <option value="5000+">$5,000+</option>
+                <option value="Not Sure">Not Sure</option>
+              </select>
+            </div>
+            <div style="margin-bottom:24px;">
+              <textarea name="message" class="input-modern" rows="4"
+                placeholder="Tell us about your business, current challenges, and what you'd like to improve..."
+                data-i18n-placeholder="form_message_ph"></textarea>
+            </div>
+            <button type="button" id="helpWithFormBtn"
+              style="width:100%; padding:12px; margin-bottom:12px; background:var(--bg-blue-light); color:var(--bg-blue); border:2px solid var(--bg-blue); border-radius:var(--radius-xs); font-weight:600; cursor:pointer; font-size:0.95rem; transition:all var(--transition);"
+              data-i18n="form_help_btn">
+              Need Help? Fill this form with our AI Assistant
+            </button>
+            <button type="submit" class="btn-primary-blue" style="width:100%; justify-content:center; padding:15px;">
+              <span data-i18n="form_submit_btn">Send Message &rarr;</span>
+            </button>
+            <div id="contactSuccessAlert"
+              style="display:none; margin-top:20px; padding:16px; background:var(--bg-blue-light); border:1.5px solid var(--bg-blue); color:var(--bg-blue-dark); border-radius:var(--radius-xs); font-size:0.92rem;">
+              <strong>Thank you!</strong> We have received your message and will reach out to you within 24 business
+              hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="modern-site-footer">
+    <div class="container-modern">
+      <div class="footer-logo-brand-lockup">
+        <img src="assets/images/logo.png" alt="Pixlark Marketing" class="footer-brand-logo-full">
+      </div>
+      <h2 class="footer-hero-title">
+        <span data-i18n="footer_tagline_1">LET'S GROW YOUR</span><br>
+        <span class="blue-highlight" data-i18n="footer_tagline_2">BUSINESS ONLINE</span> <span
+          data-i18n="footer_tagline_3">TOGETHER.</span>
+      </h2>
+      <div class="footer-bottom-row">
+        <div>&copy; <span id="currentYear">2026</span> <span data-i18n="footer_rights">Pixlark Marketing. All rights
+            reserved.</span></div>
+        <div style="display:flex; gap:24px;">
+          <a href="mailto:contact@pixlarkmarketing.com">contact@pixlarkmarketing.com</a>
+          <a href="https://in.linkedin.com/in/pixlark-marketing" target="_blank" rel="noopener noreferrer"
+            style="display:inline-flex; align-items:center; gap:6px;"><i class="fa-brands fa-linkedin-in"></i>
+            LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
